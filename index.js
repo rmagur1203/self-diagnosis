@@ -112,11 +112,18 @@ async function Servey(token) {
     return data;
 }
 
-async function test(lctnScCode, schulCrseScCode, schoolName, Name, Birth) {
+async function AutoCheck(lctnScCode, schulCrseScCode, schoolName, Name, Birth) {
     var School = await SearchSchool(lctnScCode, schulCrseScCode, schoolName);
     var Token = await LoginToken(School.schulList[0].orgCode, Name, Birth);
     var servey = await Servey(Token.token);
-    console.log(servey)
+    console.log(servey);
 }
 
-test(lctnScCodes.경기도, schulCrseScCodes.중학교, "XXX중학교", "XXX", "200907");
+module.exports = {
+    lctnScCodes: lctnScCodes,
+    schulCrseScCodes: schulCrseScCodes,
+    SearchSchool: SearchSchool,
+    LoginToken: LoginToken,
+    Servey: Servey,
+    AutoCheck: AutoCheck
+}
