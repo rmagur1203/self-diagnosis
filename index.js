@@ -32,6 +32,52 @@ const schulCrseScCodes = Object.freeze({
     특수학교: 5
 });
 
+WAFData = () => new Promise(resolve => {
+    request.get("https://goehcs.eduro.go.kr/", {
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+            'Content-Type': 'application/json',
+            'Host': 'goehcs.eduro.go.kr'
+        },
+    }, function(err, res, body) {
+        resolve(res.headers["set-cookie"]);
+    });
+});
+async function selectGroupList(token) {
+    var url = "https://goehcs.eduro.go.kr/selectGroupList";
+    var data = await requestp.post({
+        url: url,
+        method: "POST",
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+            'Authorization': token,
+            'Host': 'goehcs.eduro.go.kr',
+            'Origin': 'https://hcs.eduro.go.kr',
+            'Referer': 'https://hcs.eduro.go.kr/'
+        },
+        json: {}
+    });
+    return data;
+}
+async function UserRefresh(token, orgCode, userPNo) {
+    var url = "https://goehcs.eduro.go.kr/userrefresh";
+    var data = await requestp.post({
+        url: url,
+        method: "POST",
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+            'Authorization': token,
+            'Host': 'goehcs.eduro.go.kr',
+            'Origin': 'https://hcs.eduro.go.kr',
+            'Referer': 'https://hcs.eduro.go.kr/'
+        },
+        json: {
+            orgCode: orgCode,
+            userPNo: userPNo
+        }
+    });
+    return data;
+}
 async function SearchSchool(lctnScCode, schulCrseScCode, orgName) {
     var url = encodeURI(`https://hcs.eduro.go.kr/school?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&currentPageNo=1`);
     var plain = await requestp.get(url);
@@ -115,6 +161,8 @@ async function Servey(token) {
 async function AutoCheck(lctnScCode, schulCrseScCode, schoolName, Name, Birth) {
     var School = await SearchSchool(lctnScCode, schulCrseScCode, schoolName);
     var Token = await LoginToken(School.schulList[0].orgCode, Name, Birth);
+    //var List = await selectGroupList(Token.token);    
+    //var User = await UserRefresh(Token.token, School.schulList[0].orgCode, List.groupList[0].userPNo);
     var servey = await Servey(Token.token);
     console.log(servey);
 }
@@ -122,6 +170,9 @@ async function AutoCheck(lctnScCode, schulCrseScCode, schoolName, Name, Birth) {
 module.exports = {
     lctnScCodes: lctnScCodes,
     schulCrseScCodes: schulCrseScCodes,
+    WAFData: WAFData,
+    selectGroupList: selectGroupList,
+    UserRefresh: UserRefresh,
     SearchSchool: SearchSchool,
     LoginToken: LoginToken,
     Servey: Servey,
