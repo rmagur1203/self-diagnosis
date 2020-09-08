@@ -32,7 +32,7 @@ const schulCrseScCodes = Object.freeze({
     특수학교: 5
 });
 
-WAFData = () => new Promise(resolve => {
+WAFData = () => new Promise((resolve, reject) =>
     request.get("https://goehcs.eduro.go.kr/", {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -40,13 +40,12 @@ WAFData = () => new Promise(resolve => {
             'Host': 'goehcs.eduro.go.kr'
         },
     }, function(err, res, body) {
+        if (err) reject(err);
         resolve(res.headers["set-cookie"]);
-    });
-});
-async function selectGroupList(token) {
-    var url = "https://goehcs.eduro.go.kr/selectGroupList";
-    var data = await requestp.post({
-        url: url,
+    }));
+selectGroupList = (token) => new Promise((resolve, reject) =>
+    request.post({
+        url: "https://goehcs.eduro.go.kr/selectGroupList",
         method: "POST",
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -56,13 +55,13 @@ async function selectGroupList(token) {
             'Referer': 'https://hcs.eduro.go.kr/'
         },
         json: {}
-    });
-    return data;
-}
-async function UserRefresh(token, orgCode, userPNo) {
-    var url = "https://goehcs.eduro.go.kr/userrefresh";
-    var data = await requestp.post({
-        url: url,
+    }, function(err, res, body) {
+        if (err) reject(err);
+        resolve(body);
+    }));
+UserRefresh = (token, orgCode, userPNo) => new Promise((resolve, reject) =>
+    request.post({
+        url: "https://goehcs.eduro.go.kr/userrefresh",
         method: "POST",
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -75,19 +74,20 @@ async function UserRefresh(token, orgCode, userPNo) {
             orgCode: orgCode,
             userPNo: userPNo
         }
-    });
-    return data;
-}
-async function SearchSchool(lctnScCode, schulCrseScCode, orgName) {
+    }, function(err, res, body) {
+        if (err) reject(err);
+        resolve(body);
+    }));
+SearchSchool = (lctnScCode, schulCrseScCode, orgName) => new Promise((resolve, reject) => {
     var url = encodeURI(`https://hcs.eduro.go.kr/school?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&currentPageNo=1`);
-    var plain = await requestp.get(url);
-    var data = JSON.parse(plain);
-    return data;
-}
-async function LoginToken(orgcode, name, birthday) {
-    var url = "https://goehcs.eduro.go.kr/loginwithschool";
-    var data = await requestp.post({
-        url: url,
+    request.get(url, function(err, res, body) {
+        if (err) reject(err);
+        resolve(JSON.parse(body));
+    });
+});
+LoginToken = (orgcode, name, birthday) => new Promise((resolve, reject) =>
+    request.post({
+        url: "https://goehcs.eduro.go.kr/loginwithschool",
         method: "POST",
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -101,13 +101,13 @@ async function LoginToken(orgcode, name, birthday) {
             name: crypto.encrypt(name),
             birthday: crypto.encrypt(birthday)
         }
-    });
-    return data;
-};
-async function Servey(token) {
-    var url = "https://goehcs.eduro.go.kr/registerServey";
-    var data = await requestp.post({
-        url: url,
+    }, function(err, res, body) {
+        if (err) reject(err);
+        resolve(body);
+    }));
+Servey = (token) => new Promise((resolve, reject) =>
+    request.post({
+        url: "https://goehcs.eduro.go.kr/registerServey",
         method: "POST",
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -154,15 +154,14 @@ async function Servey(token) {
             //두통
             deviceUuid: ""
         }
-    });
-    return data;
-}
+    }, function(err, res, body) {
+        if (err) reject(err);
+        resolve(body);
+    }));
 
 async function AutoCheck(lctnScCode, schulCrseScCode, schoolName, Name, Birth) {
     var School = await SearchSchool(lctnScCode, schulCrseScCode, schoolName);
     var Token = await LoginToken(School.schulList[0].orgCode, Name, Birth);
-    //var List = await selectGroupList(Token.token);    
-    //var User = await UserRefresh(Token.token, School.schulList[0].orgCode, List.groupList[0].userPNo);
     var servey = await Servey(Token.token);
     console.log(servey);
 }
