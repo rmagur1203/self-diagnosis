@@ -1,0 +1,25 @@
+{
+    "name": "self-diagnosis",
+    "version": "1.0.2",
+    "description": "self-diagnosis for Ministry of Education",
+    "main": "index.js",
+    "dependencies": {
+        "node-jsencrypt": "^1.0.0",
+        "request": "^2.88.2",
+        "request-promise": "^4.2.6"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "node test"
+    },
+    "author": "rmagur1203",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rmagur1203/self-diagnosis.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rmagur1203/self-diagnosis/issues"
+    },
+    "homepage": "https://github.com/rmagur1203/self-diagnosis#readme"
+}

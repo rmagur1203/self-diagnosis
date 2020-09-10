@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="self-diagnosis:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/self_diagnosis_jar</output-path>
+    <root id="archive" name="self-diagnosis.jar">
+      <element id="module-output" name="self-diagnosis" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="library" level="project" name="json-simple-1.1.1" />
+    </root>
+  </artifact>
+</component>
