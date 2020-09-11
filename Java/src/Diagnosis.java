@@ -19,7 +19,9 @@ import java.util.Base64;
 
 public class Diagnosis {
     private final String publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA81dCnCKt0NVH7j5Oh2+SGgEU0aqi5u6sYXemouJWXOlZO3jqDsHYM1qfEjVvCOmeoMNFXYSXdNhflU7mjWP8jWUmkYIQ8o3FGqMzsMTNxr+bAp0cULWu9eYmycjJwWIxxB7vUwvpEUNicgW7v5nCwmF5HS33Hmn7yDzcfjfBs99K5xJEppHG0qc+q3YXxxPpwZNIRFn0Wtxt0Muh1U8avvWyw03uQ/wMBnzhwUC8T4G5NclLEWzOQExbQ4oDlZBv8BM/WxxuOyu0I8bDUDdutJOfREYRZBlazFHvRKNNQQD2qDfjRz484uFs7b5nykjaMB9k/EJAuHjJzGs9MMMWtQIDAQAB";
+    private String atptOfcdcConctUrl = "hcs.eduro.go.kr";
     private String orgCode;
+    private String Token;
 
     public enum lctnScCodes {
         서울특별시(1),
@@ -72,21 +74,30 @@ public class Diagnosis {
         JSONObject jsonObject = (JSONObject)jsonParser.parse(data);
         JSONArray schulList = (JSONArray) jsonObject.get("schulList");
         JSONObject schulFirst = (JSONObject) schulList.get(0);
-        return (String) schulFirst.get("orgCode");
+        atptOfcdcConctUrl = (String) schulFirst.get("atptOfcdcConctUrl");
+        orgCode = (String) schulFirst.get("orgCode");
+        return orgCode;
     }
     public String LoginToken(String orgCode, String Name, String Birth) throws Exception {
+        if (orgCode.isEmpty())
+            orgCode = this.orgCode;
         JSONObject parameter = new JSONObject();
         parameter.put("orgcode", orgCode);
         parameter.put("name", encode(Name, publicKey));
         parameter.put("birthday", encode(Birth, publicKey));
-        String data = Post("https://goehcs.eduro.go.kr/loginwithschool", parameter.toString());
+        String url = String.format("https://%s/loginwithschool", atptOfcdcConctUrl);
+        String data = Post(url, parameter.toString());
         System.out.println(data);
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject)jsonParser.parse(data);
-        return (String) jsonObject.get("token");
+        Token = (String) jsonObject.get("token");
+        return Token;
     }
     public String Servey(String token) throws Exception {
-        String data = PostToken("https://goehcs.eduro.go.kr/registerServey", "{\"rspns00\":\"Y\",\"rspns01\":\"1\",\"rspns02\":\"1\",\"rspns03\":null,\"rspns04\":null,\"rspns05\":null,\"rspns06\":null,\"rspns07\":\"0\",\"rspns08\":\"0\",\"rspns09\":\"0\",\"rspns10\":null,\"rspns11\":null,\"rspns12\":null,\"rspns13\":null,\"rspns14\":null,\"rspns15\":null,\"deviceUuid\":\"\"}", token);
+        if (token.isEmpty())
+            token = this.Token;
+        String url = String.format("https://%s/registerServey", atptOfcdcConctUrl);
+        String data = PostToken(url, "{\"rspns00\":\"Y\",\"rspns01\":\"1\",\"rspns02\":\"1\",\"rspns03\":null,\"rspns04\":null,\"rspns05\":null,\"rspns06\":null,\"rspns07\":\"0\",\"rspns08\":\"0\",\"rspns09\":\"0\",\"rspns10\":null,\"rspns11\":null,\"rspns12\":null,\"rspns13\":null,\"rspns14\":null,\"rspns15\":null,\"deviceUuid\":\"\"}", token);
         return data;
     }
 
