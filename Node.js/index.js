@@ -77,7 +77,7 @@ UserRefresh = (token, orgCode, userPNo) => new Promise((resolve, reject) =>
         resolve(body);
     }));
 SearchSchool = (lctnScCode, schulCrseScCode, orgName) => new Promise((resolve, reject) => {
-    var url = encodeURI(`https://${atptOfcdcConctUrl}/school?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&currentPageNo=1`);
+    var url = encodeURI(`https://${atptOfcdcConctUrl}/v2/searchSchool?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&currentPageNo=1`);
     request.get(url, function(err, res, body) {
         if (err) reject(err);
         let School = JSON.parse(body);
