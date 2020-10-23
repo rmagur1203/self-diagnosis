@@ -1,18 +1,7 @@
 # self-diagnosis
 (교육부 자가진단)자가진단 관련 라이브러리
-# 함수 설명
-## SearchSchool
-학교를 검색하고 atptOfcdcConctUrl 에 호스트를 저장하고 결과를 반환합니다.
-## LoginToken
-학교의 orgCode 와 이름, 생년월일을 받고 인증용 토큰을 반환합니다.
-## selectGroupList
-토큰을 받고 유저 목록을 반환합니다.
-## UserRefresh
-토큰과 학교의 orgCode 그리고 userPNo 를 받아서 유저 정보를 반환합니다.
-## Servey
-토큰을 받고 자가진단 설문을 제출합니다.
 
-# 함수 반환값
+# 함수 반환값 (v1)
 ## SearchSchool
 ```js
 {
@@ -77,21 +66,121 @@
   ]
 }
 ```
+## registerServey
+```js
+{
+  registerDtm: '자가진단 한 시각',
+  inveYmd: '자가진단 한 시각'
+}
+```
 
-사용법 예시
+# 함수 반환값 (v2)
+## searchSchool
+```js
+{
+  schulList: [
+    {
+      orgCode: '학교 코드',
+      kraOrgNm: '학교 한글 이름',
+      engOrgNm: '학교 영어 이름',
+      insttClsfCode: '5',
+      lctnScCode: '10',
+      lctnScNm: '경기도',
+      sigCode: '41111',
+      juOrgCode: 'J100000250',
+      schulKndScCode: '03',
+      orgAbrvNm01: '수원북중학교',
+      orgAbrvNm02: '수원북중학교',
+      orgUon: 'Y',
+      updid: 'SYSTEM',
+      mdfcDtm: '2020-08-19 20:17:42.0',
+      atptOfcdcConctUrl: '관할 교육청 주소',
+      addres: '학교 주소'
+    }
+  ],
+  sizeover: false //검색 결과가 30개 초과일시 30개만 표시하고 sizeover 가 true 가 됨
+}
+```
+## findUser
+```js
+{
+  orgName: '학교 이름',
+  admnYn: 'N',
+  atptOfcdcConctUrl: '관할 교육청 주소',
+  mngrClassYn: 'N',
+  pInfAgrmYn: 'Y',
+  userName: '이름',
+  stdntYn: 'Y',
+  token: 'Bearer 토큰',
+  mngrDeptYn: 'N'
+}
+```
+## hasPassword
+```js
+true //비밀번호가 있을시에 true 반환
+```
+## validatePassword
+```js
+true //비밀번호가 맞을시에 true 반환
+```
+## selectUserGroup
+```js
+[
+  {
+    orgCode: '학교 코드',
+    orgName: '학교 이름',
+    userPNo: '고유 번호',
+    userNameEncpt: '이름',
+    stdntYn: 'Y',
+    mngrYn: 'N',
+    schulCrseScCode: '3', //학교 분류 코드(초등학교, 중학교, 고등학교 등)
+    lctnScCode: '10', //학교 지역 분류 코드
+    token: 'Bearer 토큰',
+    atptOfcdcConctUrl: '관할 교육청 주소',
+    wrongPassCnt: 0,
+    otherYn: 'N' //다른 사람이 있는지
+  }
+]
+```
+## getUserInfo
+```js
+{
+  orgCode: '학교 코드',
+  orgName: '학교 이름',
+  userPNo: '고유 번호',
+  userNameEncpt: '학생 이름',
+  userName: '학생 이름',
+  stdntYn: 'Y',
+  mngrClassYn: 'N',
+  mngrDeptYn: 'N',
+  schulCrseScCode: '3', //학교 분류 코드(초등학교, 중학교, 고등학교 등)
+  lctnScCode: '10', //학교 지역 분류 코드
+  insttClsfCode: '5',
+  token: 'Bearer 토큰',
+  atptOfcdcConctUrl: '관할 교육청 주소',
+  registerDtm: '자가진단 한 시각',
+  registerYmd: '자가진단 한 날짜',
+  isHealthy: true, //자가진단 통과한지
+  pInfAgrmYn: 'Y',
+  admnYn: 'N',
+  lockYn: 'N',
+  wrongPassCnt: 0 //자가진단 실패 횟수
+}
+```
 
-# 예시
-## 바로 자가진단
-AutoCheck(lctnScCodes.경기도, schulCrseScCodes.중학교, "XXX중학교", "XXX", "생년월일(주민등록번호 앞 6자리)");
-## 단계
-1. SearchSchool
-2. LoginToken
-3. Servey
+# Api v1
+1. WAFData - https://hcs.eduro.go.kr/
+2. SearchSchool - https://hcs.eduro.go.kr/school
+3. LoginToken - https://${atptOfcdcConctUrl}/loginwithschool
+4. selectGroupList - https://${atptOfcdcConctUrl}/selectGroupList - Deprecated (v2 로 연결)
+5. UserRefresh - https://${atptOfcdcConctUrl}/userrefresh
+6. Servey - https://${atptOfcdcConctUrl}/registerServey
 
-or
-
-1. SearchSchool
-2. LoginToken
-3. selectGroupList
-4. UserRefresh
-5. Servey
+# Api v2
+1. searchSchool - https://hcs.eduro.go.kr/v2/searchSchool
+2. findUser - https://${atptOfcdcConctUrl}/v2/findUser
+3. hasPassword - https://${atptOfcdcConctUrl}/v2/hasPassword
+4. validatePassword - https://${atptOfcdcConctUrl}/v2/validatePassword
+5. selectGroupList - https://${atptOfcdcConctUrl}/v2/selectUserGroup
+6. getUserInfo - https://${atptOfcdcConctUrl}/v2/getUserInfo
+7. registerServey - v1 의 registerServey 그대로 사용

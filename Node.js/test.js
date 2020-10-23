@@ -16,18 +16,18 @@ const exit = async() => {
 
 async function Check(lctnScCode, schulCrseScCode, schoolName, Name, Birth) {
     try {
-        var School = await Diagnosis.SearchSchool(lctnScCode, schulCrseScCode, schoolName);
-        var Token = await Diagnosis.LoginToken(School.schulList[0].orgCode, Name, Birth);
-        var List = await Diagnosis.selectGroupList(Token.token);
-        var User = await Diagnosis.UserRefresh(Token.token, School.schulList[0].orgCode, List.groupList[0].userPNo);
+        var School = await Diagnosis.v1.SearchSchool(lctnScCode, schulCrseScCode, schoolName);
+        var Token = await Diagnosis.v1.LoginToken(School.schulList[0].orgCode, Name, Birth);
+        var List = await Diagnosis.v1.selectGroupList(Token.token);
+        var User = await Diagnosis.v1.UserRefresh(Token.token, School.schulList[0].orgCode, List.groupList[0].userPNo);
         var servey = "오늘은 이미 자가진단을 했습니다.";
         if (User.UserInfo.registerDtm != undefined) {
             var last = new Date(User.UserInfo.registerDtm);
             if (!sameDay(last, new Date())) {
-                servey = await Diagnosis.Servey(Token.token);
+                servey = await Diagnosis.v1.Servey(Token.token);
             }
         } else {
-            servey = await Diagnosis.Servey(Token.token);
+            servey = await Diagnosis.v1.Servey(Token.token);
         }
         console.log(servey);
         console.log("계속하려면 아무키나 누르십시오...");
