@@ -69,7 +69,7 @@ public class Diagnosis {
     }
 
     public String SchoolCode(lctnScCodes lctnScCode, schulCrseScCodes schulCrseScCode, String schulName) throws Exception {
-        String data = Get(String.format("https://hcs.eduro.go.kr/school?lctnScCode=%s&schulCrseScCode=%s&orgName=%s&currentPageNo=1", lctnScCode.getCode(), schulCrseScCode.getCode(), URLEncoder.encode(schulName)));
+        String data = Get(String.format("https://hcs.eduro.go.kr/v2/searchSchool?lctnScCode=%s&schulCrseScCode=%s&orgName=%s&currentPageNo=1", lctnScCode.getCode(), schulCrseScCode.getCode(), URLEncoder.encode(schulName)));
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject)jsonParser.parse(data);
         JSONArray schulList = (JSONArray) jsonObject.get("schulList");
