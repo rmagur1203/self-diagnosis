@@ -9,8 +9,13 @@ version: 1.0.{build}
 build_script:
 - ps: >-
     npm install -g pkg-fetch@2.5.8
+
     npm install -g pkg
+
     cd Node.js
+    
     npm install
+
     cd ..
+
     cd build
