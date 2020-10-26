@@ -6,6 +6,15 @@ install:
   - npm install
 
 version: 1.0.{build}
+artifacts:
+- path: build
+  name: build
+- path: build\test-win.exe
+  name: window build
+- path: build\test-linux
+  name: linux build
+- path: build\test-macos
+  name: macos build
 build_script:
 - ps: >-
     npm install -g pkg-fetch@2.5.8
