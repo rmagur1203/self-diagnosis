@@ -7,12 +7,14 @@ crypto.setPublicKey("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA81dCnCKt0NVH7j5
     var lctn = Diagnosis.lctnScCodes.경기도;
     var schul = Diagnosis.schulCrseScCodes.중학교;
     var schulData = await Diagnosis.v2.searchSchool(lctn, schul, "");
+    /*
     var orgCode = schulData.schulList[0].orgCode;
     var userData = await Diagnosis.v2.findUser(orgCode, "", "");
     var hasPassword = await Diagnosis.v2.hasPassword(userData.token);
     var userGroup = await Diagnosis.v2.selectUserGroup(userData.token);
     var userPNo = userGroup[0].userPNo;
     var userInfo = await Diagnosis.v2.getUserInfo(userData.token, orgCode, userPNo);
-    var registerServey = await Diagnosis.v2.registerServey(userData.token)
-    console.log(registerServey);
+    var registerServey = await Diagnosis.v2.registerServey(userData.token);
+    */
+    console.log(schulData);
 })();

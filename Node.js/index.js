@@ -189,8 +189,11 @@ const v2 = {
         var url = encodeURI(`https://${atptOfcdcConctUrl}/v2/searchSchool?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&loginType=${loginType}`);
         request.get(url, function(err, res, body) {
             if (err) reject(err);
-            let School = JSON.parse(body);
-            atptOfcdcConctUrl = School.schulList[0].atptOfcdcConctUrl;
+            var School = JSON.parse(body);
+            if (School.isError == true)
+                reject(School.message);
+            else if (School.schulList.length > 0)
+                atptOfcdcConctUrl = School.schulList[0].atptOfcdcConctUrl;
             resolve(School);
         });
     }),
@@ -288,7 +291,7 @@ const v2 = {
 }
 
 module.exports = {
-    atptOfcdcConctUrl: atptOfcdcConctUrl,
+    setCdcUrl: (str) => atptOfcdcConctUrl = str,
     lctnScCodes: lctnScCodes,
     schulCrseScCodes: schulCrseScCodes,
     v1: v1,
