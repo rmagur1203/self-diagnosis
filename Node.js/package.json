@@ -11,7 +11,7 @@
     },
     "devDependencies": {},
     "scripts": {
-        "test": "pkg test.js"
+        "build": "npm install && cd ../build && pkg ../Node.js/test.js"
     },
     "author": "rmagur1203",
     "license": "ISC",
