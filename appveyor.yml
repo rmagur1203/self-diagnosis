@@ -13,9 +13,11 @@ build_script:
     npm install -g pkg
 
     cd Node.js
-    
+
     npm install
 
     cd ..
 
     cd build
+
+    pkg ../Node.js/test.js
