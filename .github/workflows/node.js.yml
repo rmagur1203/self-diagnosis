@@ -24,8 +24,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build
     - run: cd Node.js
     - run: npm install
     - run: npm install -g pkg
-    - run: cd ../build
-    - run: pkg ../Node.js/test.js
+    - run: cd ..\build
+    - run: pkg ..\Node.js\test.js
