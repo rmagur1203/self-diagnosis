@@ -21,3 +21,5 @@ build_script:
     cd build
 
     pkg ../Node.js/test.js
+
+    cd ..
