@@ -1,5 +1,7 @@
 # self-diagnosis
 (교육부 자가진단)자가진단 관련 라이브러리
+[![Build status](https://ci.appveyor.com/api/projects/status/d0el54x5849l9jpf?svg=true)](https://ci.appveyor.com/project/rmagur1203/self-diagnosis)
+![Node.js CI](https://github.com/rmagur1203/self-diagnosis/workflows/Node.js%20CI/badge.svg)
 
 # 함수 반환값 (v1)
 ## SearchSchool
