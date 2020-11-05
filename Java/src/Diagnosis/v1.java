@@ -25,6 +25,16 @@ public class v1 {
     private String orgCode;
     private String token;
 
+    /**
+     * @deprecated Replaced by {@link v2#searchSchool(lctnScCodes, schulCrseScCodes, String)}
+     * @param lctnScCode Select location in {@link lctnScCodes}
+     * @param schulCrseScCode Select grade in {@link schulCrseScCodes}
+     * @param schulName school name
+     * @return school's orgCode of first in search
+     * @throws ParseException in parse from http result to JSON
+     * @throws IOException in http post request
+     */
+    @Deprecated
     public String schoolCode(lctnScCodes lctnScCode, schulCrseScCodes schulCrseScCode, String schulName) throws ParseException, IOException {
         String data = Http.Get(String.format("https://hcs.eduro.go.kr/v2/searchSchool?lctnScCode=%s&schulCrseScCode=%s&orgName=%s&currentPageNo=1", lctnScCode.getCode(), schulCrseScCode.getCode(), URLEncoder.encode(schulName)));
         JSONParser jsonParser = new JSONParser();
@@ -35,6 +45,17 @@ public class v1 {
         orgCode = (String) schulFirst.get("orgCode");
         return orgCode;
     }
+
+    /**
+     * @deprecated Replaced by {@link v2#findUser(String, String, String)}
+     * @param orgCode At schoolCode function result
+     * @param Name Your name
+     * @param Birth Your birth day to YYMMDD format
+     * @return return token
+     * @throws ParseException in JSON parse
+     * @throws IOException in http request
+     */
+    @Deprecated
     public String loginToken(String orgCode, String Name, String Birth) throws ParseException, IOException {
         if (orgCode.isEmpty())
             orgCode = this.orgCode;
@@ -50,11 +71,21 @@ public class v1 {
         token = (String) jsonObject.get("token");
         return token;
     }
+
+    /**
+     * @deprecated This method was moved to v2 class<br>
+     * Use {@link v2#registerServey(String)} instead.
+     * @param token Token value received as a result of login
+     * @return Servey result ("OK" or JSON String)
+     * @throws IOException in http post request
+     */
+    @Deprecated
     public String servey(String token) throws IOException {
-        if (token.isEmpty())
-            token = this.token;
-        String url = String.format("https://%s/registerServey", atptOfcdcConctUrl);
-        String data = Http.PostToken(url, Json.normalServey, token);
-        return data;
+        System.out.print(Console.ANSI_YELLOW);
+        System.out.print("Deprecated warning in v1.servey function\n-   v2 의 registerServey 를 사용해주시기 바랍니다.");
+        System.out.println(Console.ANSI_RESET);
+        v2 api = new v2();
+        api.atptOfcdcConctUrl = this.atptOfcdcConctUrl;
+        return api.registerServey(token);
     }
 }

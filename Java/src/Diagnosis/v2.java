@@ -104,11 +104,10 @@ public class v2 {
     public String registerServey(String token) throws IOException {
         if (atptOfcdcConctUrl.equals("hcs.eduro.go.kr"))
             throw new IOException("atptOfcdcConctUrl 을 searchSchool의 atptOfcdcConctUrl 로 바꿔야 합니다.");
-        System.out.print(Console.ANSI_YELLOW);
-        System.out.print("Deprecated warning in v2.registerServey function\n-   v1 의 registerServey 를 사용해주시기 바랍니다.");
-        System.out.println(Console.ANSI_RESET);
-        v1 v1 = new v1();
-        v1.atptOfcdcConctUrl = this.atptOfcdcConctUrl;
-        return v1.servey(token);
+        if (token.isEmpty())
+            token = this.token;
+        String url = String.format("https://%s/registerServey", atptOfcdcConctUrl);
+        String data = Http.PostToken(url, Json.normalServey, token);
+        return data;
     }
 }
