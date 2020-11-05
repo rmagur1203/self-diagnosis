@@ -6,7 +6,7 @@ import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
-public class Encrypt {
+class Encrypt {
     public static String encode(String plainData, String stringPublicKey) {
         String encryptedData = null;
         try {

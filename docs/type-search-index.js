@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"Diagnosis","l":"lctnScCodes"},{"p":"Diagnosis","l":"schulCrseScCodes"},{"p":"<Unnamed>","l":"Test"},{"p":"Diagnosis","l":"v1"},{"p":"Diagnosis","l":"v2"}]
