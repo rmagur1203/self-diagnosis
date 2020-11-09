@@ -1,4 +1,3 @@
-const requestp = require("request-promise");
 const request = require("request");
 const JSEncrypt = require('node-jsencrypt');
 const crypto = new JSEncrypt();
@@ -33,8 +32,15 @@ const schulCrseScCodes = Object.freeze({
     고등학교: 4,
     특수학교: 5
 });
-const createServey = (rspns01, rspns02, rspns09){
-    
+const createServey = (rspns01, rspns02, rspns09) => {
+    result = {
+        rspns00: null,
+        rspns01: rspns01 ? "2" : "1",
+        rspns02: rspns02 ? "0" : "1",
+        rspns09: rspns09 ? "1" : "0"
+    };
+    result.rspns00 = (!rspns01 && !rspns02 && !rspns09);
+    return result;
 }
 const normalServey = {
     rspns00: "Y",
