@@ -33,42 +33,59 @@ const schulCrseScCodes = Object.freeze({
     고등학교: 4,
     특수학교: 5
 });
+const createServey = (rspns01, rspns02, rspns09){
+    
+}
 const normalServey = {
     rspns00: "Y",
-    //학생의 몸에 열이 있나요?
-    //Y. 37.5℃ 미만
-    //N.37.5℃ 이상 및 발열감
+    //return "1" === rspns01 && "1" === rspns02 && "0" === rspns09 ? rspns00 = "Y" : rspns00 = "N"
+
     rspns01: "1",
-    //Unknown
-    //학생에게 코로나19가 의심되는 증상이 있나요 ?
+    //학생 본인이 37.5℃ 이상 발열 또는 발열감이 있나요?
+    //단, 기저질환 등으로 코로나19와 관계없이 평소에 발열 증상이 계속되는 경우는 제외
+    //1 : 아니요
+    //2 : 예
+    
+    //학생에게 코로나19가 의심되는 아래의 임상증상*이 있나요?
+    //*(주요 임상증상) 기침, 호흡곤란, 오한, 근육통, 두통, 인후통, 후각·미각 소실 또는 폐렴
+    //단, 기저질환 등으로 코로나19와 관계없이 평소에 다음 증상이 계속되는 경우는 제외
     rspns02: "1",
-    //아니요
+    //1: 아니요
+    //0: 예
+
     rspns03: null,
-    //기침
+    //Unknown
     rspns04: null,
-    //인후통
+    //Unknown
     rspns05: null,
-    //호흡곤란
+    //Unknown
     rspns06: null,
     //Unknown
-    rspns07: "0",
-    //학생이 최근(14일 이내) 해외여행을 다녀온 사실이 있나요?
-    rspns08: "0",
-    //동거가족 중 최근(14일 이내) 해외여행을 다녀온 사실이 있나요?
+    rspns07: null,
+    //Unknown
+    rspns08: null,
+    //Unknown
+    
     rspns09: "0",
-    //동거가족 중 현재 자가격리 중 인 가족이 있나요?
+    //학생 본인 또는 동거인이 방역당국에 의해 현재 자가격리가 이루어지고 있나요?
+    //※ <방역당국 지침> 최근 14일 이내 해외 입국자, 확진자와 접촉자 등은 자가격리 조치
+    //단, 직업특성상 잦은 해외 입·출국으로 의심증상이 없는 경우 자가격리 면제
+    //0 : 아니요
+    //1 : 예
+
     rspns10: null,
     //Unknown
     rspns11: null,
-    //후각·미각 소실
+    //Unknown
     rspns12: null,
     //Unknown
     rspns13: null,
-    //오한
+    //Unknown
     rspns14: null,
-    //근육통
+    //Unknown
     rspns15: null,
-    //두통
+    //Unknown
+    upperToken: "",
     deviceUuid: ""
 };
 const URL_LIST = {

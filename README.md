@@ -3,7 +3,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/d0el54x5849l9jpf?svg=true)](https://ci.appveyor.com/project/rmagur1203/self-diagnosis)
 ![Node.js CI](https://github.com/rmagur1203/self-diagnosis/workflows/Node.js%20CI/badge.svg)
 
-# 함수 반환값 (v1)
+# 함수 반환값 (v1) (Deprecated)
 ## SearchSchool
 ```js
 {
@@ -166,7 +166,7 @@ true //비밀번호가 맞을시에 true 반환
   pInfAgrmYn: 'Y',
   admnYn: 'N',
   lockYn: 'N',
-  wrongPassCnt: 0 //자가진단 실패 횟수
+  wrongPassCnt: 0
 }
 ```
 
