@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfDiagnosisLibrary", "SelfDiagnosisLibrary.csproj", "{99765215-8DB8-406C-8520-5D0335DAE59D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99765215-8DB8-406C-8520-5D0335DAE59D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99765215-8DB8-406C-8520-5D0335DAE59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99765215-8DB8-406C-8520-5D0335DAE59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99765215-8DB8-406C-8520-5D0335DAE59D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0547B845-03DA-4CF7-A9EA-4E3510E2484C}
+	EndGlobalSection
+EndGlobal
