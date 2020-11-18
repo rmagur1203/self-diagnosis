@@ -1,5 +1,11 @@
 ﻿
+using Java.Security;
+using Java.Security.Spec;
+using Java.Util;
+using Javax.Crypto;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SelfDiagnosisLibrary
@@ -8,7 +14,7 @@ namespace SelfDiagnosisLibrary
     {
         public static async Task<string> encryptAsync(string value, string key)
         {
-            //return encode(value, key);
+            return encode(value, key);
             JObject obj = new JObject();
             obj.Add("cipherType", "RSA/ECB/PKCS1Padding");
             obj.Add("keyType", "publicKeyForEncryption");
@@ -19,7 +25,7 @@ namespace SelfDiagnosisLibrary
             JObject res = JObject.Parse(data);
             return res["encryptedOutput"].ToString();
         }
-        /*
+        
         public static String encode(String plainData, String stringPublicKey)
         {
             String encryptedData = null;
@@ -40,7 +46,7 @@ namespace SelfDiagnosisLibrary
             }
             return encryptedData;
         }
-        */
+        
 
         /*
         public static string encrypt(string value, string key)
