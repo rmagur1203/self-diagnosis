@@ -162,7 +162,7 @@ true //비밀번호가 맞을시에 true 반환
   atptOfcdcConctUrl: '관할 교육청 주소',
   registerDtm: '자가진단 한 시각',
   registerYmd: '자가진단 한 날짜',
-  isHealthy: true, //자가진단 통과한지
+  isHealthy: true, //true 정상, false 유증상, 필드 없음: 미참여
   pInfAgrmYn: 'Y',
   admnYn: 'N',
   lockYn: 'N',
