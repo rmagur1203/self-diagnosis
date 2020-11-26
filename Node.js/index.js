@@ -44,7 +44,7 @@ const createServey = (rspns01, rspns02, rspns09) => {
 }
 const normalServey = {
     rspns00: "Y",
-    //return "1" === rspns01 && "1" === rspns02 && "0" === rspns09 ? rspns00 = "Y" : rspns00 = "N"
+    //  
 
     rspns01: "1",
     //학생 본인이 37.5℃ 이상 발열 또는 발열감이 있나요?
@@ -209,7 +209,7 @@ const v1 = {
 
 const v2 = {
     searchSchool: (lctnScCode, schulCrseScCode, orgName, loginType = "school") => new Promise((resolve, reject) => {
-        var url = encodeURI(`https://${atptOfcdcConctUrl}/v2/searchSchool?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&loginType=${loginType}`);
+        var url = encodeURI(`https://${atptOfcdcConctUrl}/${SEARCH_SCHOOL}?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&loginType=${loginType}`);
         request.get(url, function(err, res, body) {
             if (err) reject(err);
             var School = JSON.parse(body);
@@ -222,7 +222,7 @@ const v2 = {
     }),
     findUser: (orgcode, name, birthday, loginType = "school") => new Promise((resolve, reject) =>
         request.post({
-            url: `https://${atptOfcdcConctUrl}/v2/findUser`,
+            url: `https://${atptOfcdcConctUrl}/${FIND_USER}`,
             method: "POST",
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -242,7 +242,7 @@ const v2 = {
             resolve(body);
         })),
     hasPassword: (token) => new Promise((resolve, reject) => request.post({
-        url: `https://${atptOfcdcConctUrl}/v2/hasPassword`,
+        url: `https://${atptOfcdcConctUrl}/${HAS_PASSWORD}`,
         method: "POST",
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -257,7 +257,7 @@ const v2 = {
         resolve(body);
     })),
     validatePassword: (token, password) => new Promise((resolve, reject) => request.post({
-        url: `https://${atptOfcdcConctUrl}/v2/validatePassword`,
+        url: `https://${atptOfcdcConctUrl}/${LOGIN_WITH_SECOND_PASSWORD}`,
         method: "POST",
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -275,7 +275,7 @@ const v2 = {
         resolve(body);
     })),
     selectUserGroup: (token) => new Promise((resolve, reject) => request.post({
-        url: `https://${atptOfcdcConctUrl}/v2/selectUserGroup`,
+        url: `https://${atptOfcdcConctUrl}/${SELECT_GROUP_LIST}`,
         method: "POST",
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
@@ -290,7 +290,7 @@ const v2 = {
         resolve(body);
     })),
     getUserInfo: (token, orgCode, userPNo) => new Promise((resolve, reject) => request.post({
-        url: `https://${atptOfcdcConctUrl}/v2/getUserInfo`,
+        url: `https://${atptOfcdcConctUrl}/${REFRESH_USER_INFO}`,
         method: "POST",
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
