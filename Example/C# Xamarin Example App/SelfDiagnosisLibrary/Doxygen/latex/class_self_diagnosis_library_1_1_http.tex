@@ -1,0 +1,95 @@
+\hypertarget{class_self_diagnosis_library_1_1_http}{}\doxysection{Self\+Diagnosis\+Library.\+Http 클래스 참조}
+\label{class_self_diagnosis_library_1_1_http}\index{SelfDiagnosisLibrary.Http@{SelfDiagnosisLibrary.Http}}
+
+
+Self\+Diagnosis\+Library.\+Http에 대한 협력 다이어그램\+:
+% FIG 0
+\doxysubsection*{정적 Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+static async Task$<$ string $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1_http_a08dbefe0708e3f9ac1360774d38fa52c}{Get}} (string url)
+\item 
+static async Task$<$ string $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1_http_ab502ca929169e051e0d160a40abfbce5}{Post\+Token}} (string url, string content, string token)
+\item 
+static async Task$<$ string $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1_http_a16d29eda66ae78262441dee2e2156058}{Post\+Json}} (string url, string content)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{상세한 설명}
+
+
+Http.\+cs 파일의 10 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1_http_a08dbefe0708e3f9ac1360774d38fa52c}\label{class_self_diagnosis_library_1_1_http_a08dbefe0708e3f9ac1360774d38fa52c}} 
+\index{SelfDiagnosisLibrary.Http@{SelfDiagnosisLibrary.Http}!Get@{Get}}
+\index{Get@{Get}!SelfDiagnosisLibrary.Http@{SelfDiagnosisLibrary.Http}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily static async Task$<$string$>$ Self\+Diagnosis\+Library.\+Http.\+Get (\begin{DoxyParamCaption}\item[{string}]{url }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http.\+cs 파일의 12 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13         \{}
+\DoxyCodeLine{14             HttpClient client = \textcolor{keyword}{new} HttpClient();}
+\DoxyCodeLine{15             HttpResponseMessage res = await client.GetAsync(url);}
+\DoxyCodeLine{16             \textcolor{keywordflow}{return} await res.Content.ReadAsStringAsync();}
+\DoxyCodeLine{17         \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 1
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1_http_a16d29eda66ae78262441dee2e2156058}\label{class_self_diagnosis_library_1_1_http_a16d29eda66ae78262441dee2e2156058}} 
+\index{SelfDiagnosisLibrary.Http@{SelfDiagnosisLibrary.Http}!PostJson@{PostJson}}
+\index{PostJson@{PostJson}!SelfDiagnosisLibrary.Http@{SelfDiagnosisLibrary.Http}}
+\doxysubsubsection{\texorpdfstring{PostJson()}{PostJson()}}
+{\footnotesize\ttfamily static async Task$<$string$>$ Self\+Diagnosis\+Library.\+Http.\+Post\+Json (\begin{DoxyParamCaption}\item[{string}]{url,  }\item[{string}]{content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http.\+cs 파일의 28 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             HttpClient client = \textcolor{keyword}{new} HttpClient();}
+\DoxyCodeLine{31             HttpResponseMessage res = await client.PostAsync(url, \textcolor{keyword}{new} StringContent(content, Encoding.UTF8, \textcolor{stringliteral}{"{}application/json"{}}));}
+\DoxyCodeLine{32             \textcolor{keywordflow}{return} await res.Content.ReadAsStringAsync();}
+\DoxyCodeLine{33         \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 2
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1_http_ab502ca929169e051e0d160a40abfbce5}\label{class_self_diagnosis_library_1_1_http_ab502ca929169e051e0d160a40abfbce5}} 
+\index{SelfDiagnosisLibrary.Http@{SelfDiagnosisLibrary.Http}!PostToken@{PostToken}}
+\index{PostToken@{PostToken}!SelfDiagnosisLibrary.Http@{SelfDiagnosisLibrary.Http}}
+\doxysubsubsection{\texorpdfstring{PostToken()}{PostToken()}}
+{\footnotesize\ttfamily static async Task$<$string$>$ Self\+Diagnosis\+Library.\+Http.\+Post\+Token (\begin{DoxyParamCaption}\item[{string}]{url,  }\item[{string}]{content,  }\item[{string}]{token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http.\+cs 파일의 19 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20         \{}
+\DoxyCodeLine{21             \textcolor{keywordtype}{string} newToken = token.Replace(\textcolor{stringliteral}{"{}Bearer"{}}, \textcolor{stringliteral}{"{}"{}}).Trim();}
+\DoxyCodeLine{22             HttpClient client = \textcolor{keyword}{new} HttpClient();}
+\DoxyCodeLine{23             client.DefaultRequestHeaders.Authorization = \textcolor{keyword}{new} System.Net.Http.Headers.AuthenticationHeaderValue(\textcolor{stringliteral}{"{}Bearer"{}}, newToken);}
+\DoxyCodeLine{24             HttpResponseMessage res = await client.PostAsync(url, \textcolor{keyword}{new} StringContent(content, Encoding.UTF8, \textcolor{stringliteral}{"{}application/json"{}}));}
+\DoxyCodeLine{25             \textcolor{keywordflow}{return} await res.Content.ReadAsStringAsync();}
+\DoxyCodeLine{26         \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 3
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_http_8cs}{Http.\+cs}}\end{DoxyCompactItemize}

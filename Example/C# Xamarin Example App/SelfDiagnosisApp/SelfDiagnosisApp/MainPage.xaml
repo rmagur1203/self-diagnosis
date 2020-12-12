@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SelfDiagnosisApp.MainPage">
+
+    <ScrollView>
+        <StackLayout x:Name="Users" Orientation="Vertical" x:FieldModifier="public">
+            <Label>로딩중입니다. 잠시만 기다려주세요.</Label>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

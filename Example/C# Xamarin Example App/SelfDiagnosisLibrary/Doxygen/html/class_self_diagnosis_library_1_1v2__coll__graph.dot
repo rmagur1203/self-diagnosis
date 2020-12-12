@@ -1,0 +1,7 @@
+digraph "SelfDiagnosisLibrary.v2"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{SelfDiagnosisLibrary.v2\n|+ atptOfcdcConctUrl\l+ publicKey\l- orgCode\l- token\l|+ searchSchool()\l+ searchSchool()\l+ findUser()\l+ findUser()\l+ hasPassword()\l+ validatePassword()\l+ validPWD2bool()\l+ selectUserGroup()\l+ getUserInfo()\l+ registerServey()\l+ registerServey()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

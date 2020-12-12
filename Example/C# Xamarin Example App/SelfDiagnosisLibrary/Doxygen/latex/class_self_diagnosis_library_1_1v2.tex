@@ -1,0 +1,393 @@
+\hypertarget{class_self_diagnosis_library_1_1v2}{}\doxysection{Self\+Diagnosis\+Library.\+v2 클래스 참조}
+\label{class_self_diagnosis_library_1_1v2}\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+
+
+Self\+Diagnosis\+Library.\+v2에 대한 협력 다이어그램\+:
+% FIG 0
+\doxysubsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+async Task$<$ J\+Array $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a9832e96a69333cf2c0a956f146f73b52}{search\+School}} (\mbox{\hyperlink{namespace_self_diagnosis_library_ac1e6b21e38813f33eeaf311910d2b82c}{lctn\+Sc\+Codes}} lctn\+Sc\+Code, \mbox{\hyperlink{namespace_self_diagnosis_library_a8f11b628bbd03eef71ef6dd37f4cea30}{schul\+Crse\+Sc\+Codes}} schul\+Crse\+Sc\+Code, String org\+Name)
+\item 
+async Task$<$ J\+Array $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a9108b62ea825086c3942053653367d5c}{search\+School}} (\mbox{\hyperlink{namespace_self_diagnosis_library_ac1e6b21e38813f33eeaf311910d2b82c}{lctn\+Sc\+Codes}} lctn\+Sc\+Code, \mbox{\hyperlink{namespace_self_diagnosis_library_a8f11b628bbd03eef71ef6dd37f4cea30}{schul\+Crse\+Sc\+Codes}} schul\+Crse\+Sc\+Code, String org\+Name, String login\+Type)
+\item 
+async Task$<$ J\+Object $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac3c2f2163d06036c19ecd578c0aae5e0}{find\+User}} (String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}{org\+Code}}, String name, String birth\+Day)
+\item 
+async Task$<$ J\+Object $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ae87da5e48c635de863264996a589e42d}{find\+User}} (String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}{org\+Code}}, String name, String birth\+Day, String login\+Type)
+\item 
+async Task$<$ bool $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a5fb910f2cc299c6c298f6c5ad4fcbb80}{has\+Password}} (String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}})
+\item 
+async Task$<$ string $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_aee20c6a8ae8c4e6d428e63bd53d15df7}{validate\+Password}} (String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}, String password)
+\item 
+bool \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_af1d0ab6f2c78f8b1a069baf51a3f170e}{valid\+P\+W\+D2bool}} (String body)
+\item 
+async Task$<$ J\+Array $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a555cf03c3b84e74771284cdc8fc96d26}{select\+User\+Group}} (String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}})
+\item 
+async Task$<$ J\+Object $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac551e7d4a2ccca92c671f90d70b7e7e2}{get\+User\+Info}} (String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}, String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}{org\+Code}}, String user\+P\+No)
+\item 
+async Task$<$ string $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a28795427ed396d17a2cee68fdc48654a}{register\+Servey}} (String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}})
+\begin{DoxyCompactList}\small\item\em 서버로 설문조사를 전송합니다. \end{DoxyCompactList}\item 
+async Task$<$ string $>$ \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_af8dedc16ce52ce1d96f6709a36ca6fe7}{register\+Servey}} (String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}, string content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 속성}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atpt\+Ofcdc\+Conct\+Url}} = \char`\"{}hcs.\+eduro.\+go.\+kr\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{정적 Public 속성}
+\begin{DoxyCompactItemize}
+\item 
+static readonly string \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a59cf034bbc5685239d6789e30fa1e182}{public\+Key}} = \char`\"{}M\+I\+I\+B\+Ij\+A\+N\+Bgkqhki\+G9w0\+B\+A\+Q\+E\+F\+A\+A\+O\+C\+A\+Q8\+A\+M\+I\+I\+B\+Cg\+K\+C\+A\+Q\+E\+A81d\+Cn\+C\+Kt0\+N\+V\+H7j5\+Oh2+S\+Gg\+E\+U0aqi5u6s\+Y\+Xemou\+J\+W\+X\+Ol\+Z\+O3jq\+Ds\+H\+Y\+M1qf\+Ej\+Vv\+C\+Omeo\+M\+N\+F\+X\+Y\+S\+Xd\+Nhfl\+U7mj\+W\+P8j\+W\+Umk\+Y\+I\+Q8o3\+F\+Gq\+Mzs\+M\+T\+Nxr+b\+Ap0c\+U\+L\+Wu9e\+Ymycj\+Jw\+W\+Ixx\+B7v\+Uwvp\+E\+U\+Nicg\+W7v5n\+Cwm\+F5\+H\+S33\+Hmn7y\+Dzcfjf\+Bs99\+K5x\+J\+Epp\+H\+G0qc+q3\+Y\+Xxx\+Ppw\+Z\+N\+I\+R\+Fn0\+Wtxt0\+Muh1\+U8avv\+Wyw03uQ/w\+M\+Bnzhw\+U\+C8\+T4\+G5\+Ncl\+L\+E\+Wz\+O\+Q\+Exb\+Q4o\+Dl\+Z\+Bv8\+BM/Wxxu\+Oyu0\+I8b\+D\+U\+Ddut\+J\+Of\+R\+E\+Y\+R\+Z\+Blaz\+F\+Hv\+R\+K\+N\+N\+Q\+Q\+D2q\+Dfj\+Rz484u\+Fs7b5nykja\+M\+B9k/E\+J\+Au\+Hj\+Jz\+Gs9\+M\+M\+M\+Wt\+Q\+I\+D\+A\+Q\+AB\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}{org\+Code}}
+\item 
+String \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{상세한 설명}
+
+
+v2.\+cs 파일의 8 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_ac3c2f2163d06036c19ecd578c0aae5e0}\label{class_self_diagnosis_library_1_1v2_ac3c2f2163d06036c19ecd578c0aae5e0}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!findUser@{findUser}}
+\index{findUser@{findUser}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{findUser()}{findUser()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$J\+Object$>$ Self\+Diagnosis\+Library.\+v2.\+find\+User (\begin{DoxyParamCaption}\item[{String}]{org\+Code,  }\item[{String}]{name,  }\item[{String}]{birth\+Day }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 34 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{34                                                                                           \{}
+\DoxyCodeLine{35             \textcolor{keywordflow}{return} await \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac3c2f2163d06036c19ecd578c0aae5e0}{findUser}}(\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}{orgCode}}, name, birthDay, \textcolor{stringliteral}{"{}school"{}});}
+\DoxyCodeLine{36         \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_ae87da5e48c635de863264996a589e42d}\label{class_self_diagnosis_library_1_1v2_ae87da5e48c635de863264996a589e42d}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!findUser@{findUser}}
+\index{findUser@{findUser}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{findUser()}{findUser()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$J\+Object$>$ Self\+Diagnosis\+Library.\+v2.\+find\+User (\begin{DoxyParamCaption}\item[{String}]{org\+Code,  }\item[{String}]{name,  }\item[{String}]{birth\+Day,  }\item[{String}]{login\+Type }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 37 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37                                                                                                             \{}
+\DoxyCodeLine{38             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}} == \textcolor{stringliteral}{"{}hcs.eduro.go.kr"{}})}
+\DoxyCodeLine{39                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} Exception(\textcolor{stringliteral}{"{}atptOfcdcConctUrl 을 searchSchool의 atptOfcdcConctUrl 로 바꿔야 합니다."{}});}
+\DoxyCodeLine{40             JObject json = \textcolor{keyword}{new} JObject();}
+\DoxyCodeLine{41             json.Add(\textcolor{stringliteral}{"{}orgCode"{}}, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}{orgCode}});}
+\DoxyCodeLine{42             json.Add(\textcolor{stringliteral}{"{}name"{}}, await Encrypt.encryptAsync(name, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a59cf034bbc5685239d6789e30fa1e182}{publicKey}}));}
+\DoxyCodeLine{43             json.Add(\textcolor{stringliteral}{"{}birthday"{}}, await Encrypt.encryptAsync(birthDay, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a59cf034bbc5685239d6789e30fa1e182}{publicKey}}));}
+\DoxyCodeLine{44             json.Add(\textcolor{stringliteral}{"{}loginType"{}}, loginType);}
+\DoxyCodeLine{45             json.Add(\textcolor{stringliteral}{"{}stdntPNo"{}}, \textcolor{keyword}{null});}
+\DoxyCodeLine{46             String data = await Http.PostJson(}
+\DoxyCodeLine{47                     String.Format(\textcolor{stringliteral}{"{}https://\{0\}/v2/findUser"{}}, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}}),}
+\DoxyCodeLine{48                     json.ToString()}
+\DoxyCodeLine{49             );}
+\DoxyCodeLine{50             \textcolor{keywordflow}{return} JObject.Parse(data);}
+\DoxyCodeLine{51         \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 1
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_ac551e7d4a2ccca92c671f90d70b7e7e2}\label{class_self_diagnosis_library_1_1v2_ac551e7d4a2ccca92c671f90d70b7e7e2}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!getUserInfo@{getUserInfo}}
+\index{getUserInfo@{getUserInfo}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{getUserInfo()}{getUserInfo()}}
+{\footnotesize\ttfamily async Task$<$J\+Object$>$ Self\+Diagnosis\+Library.\+v2.\+get\+User\+Info (\begin{DoxyParamCaption}\item[{String}]{token,  }\item[{String}]{org\+Code,  }\item[{String}]{user\+P\+No }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 98 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{98                                                                                              \{}
+\DoxyCodeLine{99             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}} == \textcolor{stringliteral}{"{}hcs.eduro.go.kr"{}})}
+\DoxyCodeLine{100                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} Exception(\textcolor{stringliteral}{"{}atptOfcdcConctUrl 을 searchSchool의 atptOfcdcConctUrl 로 바꿔야 합니다."{}});}
+\DoxyCodeLine{101             JObject json = \textcolor{keyword}{new} JObject();}
+\DoxyCodeLine{102             json.Add(\textcolor{stringliteral}{"{}orgCode"{}}, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}{orgCode}});}
+\DoxyCodeLine{103             json.Add(\textcolor{stringliteral}{"{}userPNo"{}}, userPNo);}
+\DoxyCodeLine{104             String data = await Http.PostToken(}
+\DoxyCodeLine{105                     String.Format(\textcolor{stringliteral}{"{}https://\{0\}/v2/getUserInfo"{}}, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}}),}
+\DoxyCodeLine{106                     json.ToString(),}
+\DoxyCodeLine{107                     \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}}
+\DoxyCodeLine{108             );}
+\DoxyCodeLine{109             \textcolor{keywordflow}{return} JObject.Parse(data);}
+\DoxyCodeLine{110         \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 2
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_a5fb910f2cc299c6c298f6c5ad4fcbb80}\label{class_self_diagnosis_library_1_1v2_a5fb910f2cc299c6c298f6c5ad4fcbb80}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!hasPassword@{hasPassword}}
+\index{hasPassword@{hasPassword}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{hasPassword()}{hasPassword()}}
+{\footnotesize\ttfamily async Task$<$bool$>$ Self\+Diagnosis\+Library.\+v2.\+has\+Password (\begin{DoxyParamCaption}\item[{String}]{token }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 52 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53         \{}
+\DoxyCodeLine{54             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}} == \textcolor{stringliteral}{"{}hcs.eduro.go.kr"{}})}
+\DoxyCodeLine{55                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} Exception(\textcolor{stringliteral}{"{}atptOfcdcConctUrl 을 searchSchool의 atptOfcdcConctUrl 로 바꿔야 합니다."{}});}
+\DoxyCodeLine{56             String data = await Http.PostToken(}
+\DoxyCodeLine{57                     String.Format(\textcolor{stringliteral}{"{}https://\{0\}/v2/hasPassword"{}}, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}}),}
+\DoxyCodeLine{58                     \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{59                     \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}}
+\DoxyCodeLine{60             );}
+\DoxyCodeLine{61             \textcolor{keywordflow}{return} \textcolor{keywordtype}{bool}.Parse(data);}
+\DoxyCodeLine{62         \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 3
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_a28795427ed396d17a2cee68fdc48654a}\label{class_self_diagnosis_library_1_1v2_a28795427ed396d17a2cee68fdc48654a}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!registerServey@{registerServey}}
+\index{registerServey@{registerServey}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{registerServey()}{registerServey()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$string$>$ Self\+Diagnosis\+Library.\+v2.\+register\+Servey (\begin{DoxyParamCaption}\item[{String}]{token }\end{DoxyParamCaption})}
+
+
+
+서버로 설문조사를 전송합니다. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em token} & v2.\+get\+User\+Info(string, string, string) 의 반환값에서 Token 을 가져와 사용해야 합니다.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+
+\end{DoxyReturn}
+
+
+v2.\+cs 파일의 116 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{117         \{}
+\DoxyCodeLine{118             \textcolor{keywordflow}{return} await \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a28795427ed396d17a2cee68fdc48654a}{registerServey}}(\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}, Json.getNormalServey(\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}, \textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{119         \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 4
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_af8dedc16ce52ce1d96f6709a36ca6fe7}\label{class_self_diagnosis_library_1_1v2_af8dedc16ce52ce1d96f6709a36ca6fe7}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!registerServey@{registerServey}}
+\index{registerServey@{registerServey}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{registerServey()}{registerServey()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$string$>$ Self\+Diagnosis\+Library.\+v2.\+register\+Servey (\begin{DoxyParamCaption}\item[{String}]{token,  }\item[{string}]{content }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 120 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121         \{}
+\DoxyCodeLine{122             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}} == \textcolor{stringliteral}{"{}hcs.eduro.go.kr"{}})}
+\DoxyCodeLine{123                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} Exception(\textcolor{stringliteral}{"{}atptOfcdcConctUrl 을 searchSchool의 atptOfcdcConctUrl 로 바꿔야 합니다."{}});}
+\DoxyCodeLine{124             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}.Trim() == \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{125                 \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}} = this.\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}};}
+\DoxyCodeLine{126             String url = String.Format(\textcolor{stringliteral}{"{}https://\{0\}/registerServey"{}}, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}});}
+\DoxyCodeLine{127             String data = await Http.PostToken(url, content, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}});}
+\DoxyCodeLine{128             \textcolor{keywordflow}{return} data;}
+\DoxyCodeLine{129         \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 5
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_a9832e96a69333cf2c0a956f146f73b52}\label{class_self_diagnosis_library_1_1v2_a9832e96a69333cf2c0a956f146f73b52}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!searchSchool@{searchSchool}}
+\index{searchSchool@{searchSchool}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{searchSchool()}{searchSchool()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$J\+Array$>$ Self\+Diagnosis\+Library.\+v2.\+search\+School (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_self_diagnosis_library_ac1e6b21e38813f33eeaf311910d2b82c}{lctn\+Sc\+Codes}}}]{lctn\+Sc\+Code,  }\item[{\mbox{\hyperlink{namespace_self_diagnosis_library_a8f11b628bbd03eef71ef6dd37f4cea30}{schul\+Crse\+Sc\+Codes}}}]{schul\+Crse\+Sc\+Code,  }\item[{String}]{org\+Name }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 15 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15                                                                                                                          \{}
+\DoxyCodeLine{16             \textcolor{keywordflow}{return} await \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a9832e96a69333cf2c0a956f146f73b52}{searchSchool}}(lctnScCode, schulCrseScCode, orgName, \textcolor{stringliteral}{"{}school"{}});}
+\DoxyCodeLine{17         \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_a9108b62ea825086c3942053653367d5c}\label{class_self_diagnosis_library_1_1v2_a9108b62ea825086c3942053653367d5c}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!searchSchool@{searchSchool}}
+\index{searchSchool@{searchSchool}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{searchSchool()}{searchSchool()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$J\+Array$>$ Self\+Diagnosis\+Library.\+v2.\+search\+School (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_self_diagnosis_library_ac1e6b21e38813f33eeaf311910d2b82c}{lctn\+Sc\+Codes}}}]{lctn\+Sc\+Code,  }\item[{\mbox{\hyperlink{namespace_self_diagnosis_library_a8f11b628bbd03eef71ef6dd37f4cea30}{schul\+Crse\+Sc\+Codes}}}]{schul\+Crse\+Sc\+Code,  }\item[{String}]{org\+Name,  }\item[{String}]{login\+Type }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 18 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18                                                                                                                                            \{}
+\DoxyCodeLine{19             String data = await Http.Get(}
+\DoxyCodeLine{20                     String.Format(}
+\DoxyCodeLine{21                             \textcolor{stringliteral}{"{}https://hcs.eduro.go.kr/v2/searchSchool?lctnScCode=\{0\}\&schulCrseScCode=\{1\}\&orgName=\{2\}\&loginType=\{3\}"{}},}
+\DoxyCodeLine{22                             (\textcolor{keywordtype}{int})lctnScCode,}
+\DoxyCodeLine{23                             (\textcolor{keywordtype}{int})schulCrseScCode,}
+\DoxyCodeLine{24                             HttpUtility.UrlEncode(orgName),}
+\DoxyCodeLine{25                             HttpUtility.UrlEncode(loginType)}
+\DoxyCodeLine{26                     )}
+\DoxyCodeLine{27             );}
+\DoxyCodeLine{28             JObject jsonObject = JObject.Parse(data);}
+\DoxyCodeLine{29             JArray schulList = (JArray)jsonObject[\textcolor{stringliteral}{"{}schulList"{}}];}
+\DoxyCodeLine{30             \textcolor{keywordflow}{if} (schulList.Count == 1)}
+\DoxyCodeLine{31                 this.\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}} = (String)((JObject)schulList[0])[\textcolor{stringliteral}{"{}atptOfcdcConctUrl"{}}];}
+\DoxyCodeLine{32             \textcolor{keywordflow}{return} schulList;}
+\DoxyCodeLine{33         \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 6
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_a555cf03c3b84e74771284cdc8fc96d26}\label{class_self_diagnosis_library_1_1v2_a555cf03c3b84e74771284cdc8fc96d26}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!selectUserGroup@{selectUserGroup}}
+\index{selectUserGroup@{selectUserGroup}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{selectUserGroup()}{selectUserGroup()}}
+{\footnotesize\ttfamily async Task$<$J\+Array$>$ Self\+Diagnosis\+Library.\+v2.\+select\+User\+Group (\begin{DoxyParamCaption}\item[{String}]{token }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 88 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{88                                                                 \{}
+\DoxyCodeLine{89             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}} == \textcolor{stringliteral}{"{}hcs.eduro.go.kr"{}})}
+\DoxyCodeLine{90                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} Exception(\textcolor{stringliteral}{"{}atptOfcdcConctUrl 을 searchSchool의 atptOfcdcConctUrl 로 바꿔야 합니다."{}});}
+\DoxyCodeLine{91             String data = await Http.PostToken(}
+\DoxyCodeLine{92                     String.Format(\textcolor{stringliteral}{"{}https://\{0\}/v2/selectUserGroup"{}}, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}}),}
+\DoxyCodeLine{93                     \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{94                     \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}}
+\DoxyCodeLine{95             );}
+\DoxyCodeLine{96             \textcolor{keywordflow}{return} JArray.Parse(data);}
+\DoxyCodeLine{97         \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 7
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_aee20c6a8ae8c4e6d428e63bd53d15df7}\label{class_self_diagnosis_library_1_1v2_aee20c6a8ae8c4e6d428e63bd53d15df7}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!validatePassword@{validatePassword}}
+\index{validatePassword@{validatePassword}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{validatePassword()}{validatePassword()}}
+{\footnotesize\ttfamily async Task$<$string$>$ Self\+Diagnosis\+Library.\+v2.\+validate\+Password (\begin{DoxyParamCaption}\item[{String}]{token,  }\item[{String}]{password }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 63 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{64         \{}
+\DoxyCodeLine{65             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}} == \textcolor{stringliteral}{"{}hcs.eduro.go.kr"{}})}
+\DoxyCodeLine{66                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} Exception(\textcolor{stringliteral}{"{}atptOfcdcConctUrl 을 searchSchool의 atptOfcdcConctUrl 로 바꿔야 합니다."{}});}
+\DoxyCodeLine{67             JObject json = \textcolor{keyword}{new} JObject();}
+\DoxyCodeLine{68             json.Add(\textcolor{stringliteral}{"{}deviceUuid"{}}, \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{69             json.Add(\textcolor{stringliteral}{"{}password"{}}, await Encrypt.encryptAsync(password, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_a59cf034bbc5685239d6789e30fa1e182}{publicKey}}));}
+\DoxyCodeLine{70             String data = await Http.PostToken(}
+\DoxyCodeLine{71                 String.Format(\textcolor{stringliteral}{"{}https://\{0\}/v2/validatePassword"{}}, \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}{atptOfcdcConctUrl}}),}
+\DoxyCodeLine{72                 json.ToString(),}
+\DoxyCodeLine{73                 \mbox{\hyperlink{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}{token}}}
+\DoxyCodeLine{74             );}
+\DoxyCodeLine{75             \textcolor{keywordflow}{return} data;}
+\DoxyCodeLine{76         \}}
+
+\end{DoxyCode}
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 8
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_af1d0ab6f2c78f8b1a069baf51a3f170e}\label{class_self_diagnosis_library_1_1v2_af1d0ab6f2c78f8b1a069baf51a3f170e}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!validPWD2bool@{validPWD2bool}}
+\index{validPWD2bool@{validPWD2bool}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{validPWD2bool()}{validPWD2bool()}}
+{\footnotesize\ttfamily bool Self\+Diagnosis\+Library.\+v2.\+valid\+P\+W\+D2bool (\begin{DoxyParamCaption}\item[{String}]{body }\end{DoxyParamCaption})}
+
+
+
+v2.\+cs 파일의 77 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{78         \{}
+\DoxyCodeLine{79             \textcolor{keywordflow}{try}}
+\DoxyCodeLine{80             \{}
+\DoxyCodeLine{81                 \textcolor{keywordflow}{return} \textcolor{keywordtype}{bool}.Parse(body);}
+\DoxyCodeLine{82             \}}
+\DoxyCodeLine{83             \textcolor{keywordflow}{catch}}
+\DoxyCodeLine{84             \{}
+\DoxyCodeLine{85                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{86             \}}
+\DoxyCodeLine{87         \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}\label{class_self_diagnosis_library_1_1v2_ac19485963012a3ca3603c0e008acc9ac}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!atptOfcdcConctUrl@{atptOfcdcConctUrl}}
+\index{atptOfcdcConctUrl@{atptOfcdcConctUrl}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{atptOfcdcConctUrl}{atptOfcdcConctUrl}}
+{\footnotesize\ttfamily String Self\+Diagnosis\+Library.\+v2.\+atpt\+Ofcdc\+Conct\+Url = \char`\"{}hcs.\+eduro.\+go.\+kr\char`\"{}}
+
+
+
+v2.\+cs 파일의 11 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}\label{class_self_diagnosis_library_1_1v2_a10aae016b19a007d740b9f5fa5d175e9}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!orgCode@{orgCode}}
+\index{orgCode@{orgCode}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{orgCode}{orgCode}}
+{\footnotesize\ttfamily String Self\+Diagnosis\+Library.\+v2.\+org\+Code\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+v2.\+cs 파일의 12 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_a59cf034bbc5685239d6789e30fa1e182}\label{class_self_diagnosis_library_1_1v2_a59cf034bbc5685239d6789e30fa1e182}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!publicKey@{publicKey}}
+\index{publicKey@{publicKey}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{publicKey}{publicKey}}
+{\footnotesize\ttfamily readonly string Self\+Diagnosis\+Library.\+v2.\+public\+Key = \char`\"{}M\+I\+I\+B\+Ij\+A\+N\+Bgkqhki\+G9w0\+B\+A\+Q\+E\+F\+A\+A\+O\+C\+A\+Q8\+A\+M\+I\+I\+B\+Cg\+K\+C\+A\+Q\+E\+A81d\+Cn\+C\+Kt0\+N\+V\+H7j5\+Oh2+S\+Gg\+E\+U0aqi5u6s\+Y\+Xemou\+J\+W\+X\+Ol\+Z\+O3jq\+Ds\+H\+Y\+M1qf\+Ej\+Vv\+C\+Omeo\+M\+N\+F\+X\+Y\+S\+Xd\+Nhfl\+U7mj\+W\+P8j\+W\+Umk\+Y\+I\+Q8o3\+F\+Gq\+Mzs\+M\+T\+Nxr+b\+Ap0c\+U\+L\+Wu9e\+Ymycj\+Jw\+W\+Ixx\+B7v\+Uwvp\+E\+U\+Nicg\+W7v5n\+Cwm\+F5\+H\+S33\+Hmn7y\+Dzcfjf\+Bs99\+K5x\+J\+Epp\+H\+G0qc+q3\+Y\+Xxx\+Ppw\+Z\+N\+I\+R\+Fn0\+Wtxt0\+Muh1\+U8avv\+Wyw03uQ/w\+M\+Bnzhw\+U\+C8\+T4\+G5\+Ncl\+L\+E\+Wz\+O\+Q\+Exb\+Q4o\+Dl\+Z\+Bv8\+BM/Wxxu\+Oyu0\+I8b\+D\+U\+Ddut\+J\+Of\+R\+E\+Y\+R\+Z\+Blaz\+F\+Hv\+R\+K\+N\+N\+Q\+Q\+D2q\+Dfj\+Rz484u\+Fs7b5nykja\+M\+B9k/E\+J\+Au\+Hj\+Jz\+Gs9\+M\+M\+M\+Wt\+Q\+I\+D\+A\+Q\+AB\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+v2.\+cs 파일의 10 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}\label{class_self_diagnosis_library_1_1v2_ac833b06bb2f51396213bb3908b09d838}} 
+\index{SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}!token@{token}}
+\index{token@{token}!SelfDiagnosisLibrary.v2@{SelfDiagnosisLibrary.v2}}
+\doxysubsubsection{\texorpdfstring{token}{token}}
+{\footnotesize\ttfamily String Self\+Diagnosis\+Library.\+v2.\+token\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+v2.\+cs 파일의 13 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{v2_8cs}{v2.\+cs}}\end{DoxyCompactItemize}

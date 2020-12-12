@@ -1,0 +1,66 @@
+\hypertarget{class_self_diagnosis_library_1_1_json}{}\doxysection{Self\+Diagnosis\+Library.\+Json 클래스 참조}
+\label{class_self_diagnosis_library_1_1_json}\index{SelfDiagnosisLibrary.Json@{SelfDiagnosisLibrary.Json}}
+
+
+Self\+Diagnosis\+Library.\+Json에 대한 협력 다이어그램\+:
+% FIG 0
+\doxysubsection*{정적 Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_self_diagnosis_library_1_1_json_a88dc8de6c1571f4ce58ac0ea8d9a5794}{get\+Normal\+Servey}} (string token, string user\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{정적 Public 속성}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_self_diagnosis_library_1_1_json_ada03f2974b7fd904380f56fe74783044}{normal\+Servey}} = \char`\"{}\{\textbackslash{}\char`\"{}rspns00\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}Y\textbackslash{}\char`\"{},\textbackslash{}\char`\"{}rspns01\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}1\textbackslash{}\char`\"{},\textbackslash{}\char`\"{}rspns02\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}1\textbackslash{}\char`\"{},\textbackslash{}\char`\"{}rspns03\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns04\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns05\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns06\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns07\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns08\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns09\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}0\textbackslash{}\char`\"{},\textbackslash{}\char`\"{}rspns10\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns11\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns12\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns13\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns14\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns15\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}device\+Uuid\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}\textbackslash{}\char`\"{}, \textbackslash{}\char`\"{}upper\+Token\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}\textbackslash{}\char`\"{}, \textbackslash{}\char`\"{}upper\+User\+Name\+Encpt\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}\textbackslash{}\char`\"{}\}\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{상세한 설명}
+
+
+Json.\+cs 파일의 8 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1_json_a88dc8de6c1571f4ce58ac0ea8d9a5794}\label{class_self_diagnosis_library_1_1_json_a88dc8de6c1571f4ce58ac0ea8d9a5794}} 
+\index{SelfDiagnosisLibrary.Json@{SelfDiagnosisLibrary.Json}!getNormalServey@{getNormalServey}}
+\index{getNormalServey@{getNormalServey}!SelfDiagnosisLibrary.Json@{SelfDiagnosisLibrary.Json}}
+\doxysubsubsection{\texorpdfstring{getNormalServey()}{getNormalServey()}}
+{\footnotesize\ttfamily static string Self\+Diagnosis\+Library.\+Json.\+get\+Normal\+Servey (\begin{DoxyParamCaption}\item[{string}]{token,  }\item[{string}]{user\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Json.\+cs 파일의 11 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12         \{}
+\DoxyCodeLine{13             JObject obj = JObject.Parse(\mbox{\hyperlink{class_self_diagnosis_library_1_1_json_ada03f2974b7fd904380f56fe74783044}{normalServey}});}
+\DoxyCodeLine{14             obj[\textcolor{stringliteral}{"{}upperToken"{}}] = token;}
+\DoxyCodeLine{15             obj[\textcolor{stringliteral}{"{}upperUserNameEncpt"{}}] = userName;}
+\DoxyCodeLine{16             \textcolor{keywordflow}{return} obj.ToString();}
+\DoxyCodeLine{17         \}}
+
+\end{DoxyCode}
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+% FIG 1
+
+
+\doxysubsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_self_diagnosis_library_1_1_json_ada03f2974b7fd904380f56fe74783044}\label{class_self_diagnosis_library_1_1_json_ada03f2974b7fd904380f56fe74783044}} 
+\index{SelfDiagnosisLibrary.Json@{SelfDiagnosisLibrary.Json}!normalServey@{normalServey}}
+\index{normalServey@{normalServey}!SelfDiagnosisLibrary.Json@{SelfDiagnosisLibrary.Json}}
+\doxysubsubsection{\texorpdfstring{normalServey}{normalServey}}
+{\footnotesize\ttfamily string Self\+Diagnosis\+Library.\+Json.\+normal\+Servey = \char`\"{}\{\textbackslash{}\char`\"{}rspns00\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}Y\textbackslash{}\char`\"{},\textbackslash{}\char`\"{}rspns01\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}1\textbackslash{}\char`\"{},\textbackslash{}\char`\"{}rspns02\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}1\textbackslash{}\char`\"{},\textbackslash{}\char`\"{}rspns03\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns04\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns05\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns06\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns07\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns08\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns09\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}0\textbackslash{}\char`\"{},\textbackslash{}\char`\"{}rspns10\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns11\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns12\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns13\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns14\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}rspns15\textbackslash{}\char`\"{}\+:null,\textbackslash{}\char`\"{}device\+Uuid\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}\textbackslash{}\char`\"{}, \textbackslash{}\char`\"{}upper\+Token\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}\textbackslash{}\char`\"{}, \textbackslash{}\char`\"{}upper\+User\+Name\+Encpt\textbackslash{}\char`\"{}\+:\textbackslash{}\char`\"{}\textbackslash{}\char`\"{}\}\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Json.\+cs 파일의 10 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_json_8cs}{Json.\+cs}}\end{DoxyCompactItemize}
