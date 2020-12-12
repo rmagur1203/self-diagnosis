@@ -60,6 +60,12 @@ namespace SelfDiagnosisLibrary
             );
             return bool.Parse(data);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="password"></param>
+        /// <returns>로그인 완료 토큰을 반환합니다.</returns>
         public async Task<string> validatePassword(String token, String password)
         {
             if (atptOfcdcConctUrl == "hcs.eduro.go.kr")
@@ -72,7 +78,7 @@ namespace SelfDiagnosisLibrary
                 json.ToString(),
                 token
             );
-            return data;
+            return data.Replace("\"", "");
         }
         public bool validPWD2bool(String body)
         {

@@ -209,9 +209,8 @@ const v1 = {
 }
 
 const v2 = {
-    searchSchool: (lctnScCode, schulCrseScCode, orgName, loginType = "school") => new Promise((resolve, reject) => {
-        var url = encodeURI(`https://${atptOfcdcConctUrl}/${SEARCH_SCHOOL}?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&loginType=${loginType}`);
-        request.get(url, function(err, res, body) {
+    searchSchool: (lctnScCode, schulCrseScCode, orgName, loginType = "school") => new Promise((resolve, reject) =>
+        request.get(encodeURI(`https://${atptOfcdcConctUrl}/${SEARCH_SCHOOL}?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&loginType=${loginType}`), function(err, res, body) {
             if (err) reject(err);
             var School = JSON.parse(body);
             if (School.isError == true)
@@ -219,8 +218,7 @@ const v2 = {
             else if (School.schulList.length > 0)
                 atptOfcdcConctUrl = School.schulList[0].atptOfcdcConctUrl;
             resolve(School);
-        });
-    }),
+        })),
     findUser: (orgcode, name, birthday, loginType = "school") => new Promise((resolve, reject) =>
         request.post({
             url: `https://${atptOfcdcConctUrl}/${FIND_USER}`,
@@ -273,7 +271,7 @@ const v2 = {
         }
     }, function(err, res, body) {
         if (err) reject(err);
-        resolve(body);
+        resolve(body.replace("\"", ""));
     })),
     selectUserGroup: (token) => new Promise((resolve, reject) => request.post({
         url: `https://${atptOfcdcConctUrl}/${SELECT_GROUP_LIST}`,

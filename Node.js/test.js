@@ -19,11 +19,31 @@ const exit = async() => {
     }));
 }
 
-async function Check(orgCode, cdcUrl, Name, Birth) {
+async function Check(orgCode, cdcUrl, Name, Birth, Pwd = null) {
     try {
         Diagnosis.setCdcUrl(cdcUrl);
         var Token = await Diagnosis.v2.findUser(orgCode, Name, Birth);
-        var List = await Diagnosis.v2.selectUserGroup(Token.token);
+        var token = Token.token;
+        var hasPwd = await Diagnosis.v2.hasPassword(token);
+        if (hasPwd) {
+            if (!Pwd) {
+                console.log("비밀번호가 필요합니다.");
+                Pwd = await question("비밀번호를 입력해주세요: ");
+                console.clear();
+                var obj = {
+                    orgCode: orgCode,
+                    cdcUrl: cdcUrl,
+                    Name: Name,
+                    Birth: Birth,
+                    Pwd: Pwd
+                }
+                writeFileSync("info.json", JSON.stringify(obj));
+                process.exit(1);
+            }
+            else
+                token = await Diagnosis.v2.validatePassword(token, Pwd);
+        }
+        var List = await Diagnosis.v2.selectUserGroup(token);
         var User = await Diagnosis.v2.getUserInfo(List[0].token, orgCode, List[0].userPNo);
         var servey = "오늘은 이미 자가진단을 했습니다.";
         if (User.registerDtm != undefined) {
@@ -49,7 +69,7 @@ sameDay = (d1, d2) => d1.getFullYear() === d2.getFullYear() && d1.getMonth() ===
     if (existsSync("info.json")) {
         (async() => {
             var obj = JSON.parse(await readFileSync("info.json"));
-            Check(obj.orgCode, obj.cdcUrl, obj.Name, obj.Birth);
+            Check(obj.orgCode, obj.cdcUrl, obj.Name, obj.Birth, obj.Pwd);
         })();
     } else {
         console.clear();
@@ -113,13 +133,28 @@ sameDay = (d1, d2) => d1.getFullYear() === d2.getFullYear() && d1.getMonth() ===
         console.log("이름:", name);
         console.log("생년월일:", birth);
 
+        var Token = await Diagnosis.v2.findUser(schdata.orgCode, name, birth);
+        var hasPwd = await Diagnosis.v2.hasPassword(Token.token);
+        var Pwd = null;
+        if (hasPwd) {
+            Pwd = await question("비밀번호를 입력해주세요: ");
+            console.clear();
+            console.log("지역:", lctnans);
+            console.log("구분:", schulans);
+            console.log("학교 이름:", schdata.kraOrgNm);
+            console.log("이름:", name);
+            console.log("생년월일:", birth);
+            console.log("비밀번호:", Pwd);
+        }
+
         var obj = {
             orgCode: schdata.orgCode,
             cdcUrl: schdata.atptOfcdcConctUrl,
             Name: name,
-            Birth: birth
+            Birth: birth,
+            Pwd: Pwd
         }
         writeFileSync("info.json", JSON.stringify(obj));
-        Check(obj.orgCode, obj.cdcUrl, obj.Name, obj.Birth);
+        Check(obj.orgCode, obj.cdcUrl, obj.Name, obj.Birth, obj.Pwd);
     }
 })();
