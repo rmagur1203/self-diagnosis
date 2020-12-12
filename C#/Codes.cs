@@ -1,4 +1,8 @@
-﻿namespace SelfDiagnosisLibrary
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SelfDiagnosisLibrary
 {
     public enum lctnScCodes
     {

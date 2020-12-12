@@ -1,4 +1,15 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Java.Security;
+using Java.Security.Spec;
+using Java.Util;
+using Javax.Crypto;
+using Java.Interop;
+
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SelfDiagnosisLibrary

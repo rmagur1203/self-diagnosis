@@ -108,9 +108,14 @@ namespace SelfDiagnosisLibrary
             );
             return JObject.Parse(data);
         }
+        /// <summary>
+        /// 서버로 설문조사를 전송합니다.
+        /// </summary>
+        /// <param name="token"><see cref="v2.getUserInfo(string, string, string)"/> 의 반환값에서 Token 을 가져와 사용해야 합니다.</param>
+        /// <returns></returns>
         public async Task<string> registerServey(String token)
         {
-            return await registerServey(token, Json.normalServey);
+            return await registerServey(token, Json.getNormalServey(token, ""));
         }
         public async Task<string> registerServey(String token, string content)
         {

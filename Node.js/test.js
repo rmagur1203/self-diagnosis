@@ -24,15 +24,15 @@ async function Check(orgCode, cdcUrl, Name, Birth) {
         Diagnosis.setCdcUrl(cdcUrl);
         var Token = await Diagnosis.v2.findUser(orgCode, Name, Birth);
         var List = await Diagnosis.v2.selectUserGroup(Token.token);
-        var User = await Diagnosis.v2.getUserInfo(Token.token, orgCode, List[0].userPNo);
+        var User = await Diagnosis.v2.getUserInfo(List[0].token, orgCode, List[0].userPNo);
         var servey = "오늘은 이미 자가진단을 했습니다.";
         if (User.registerDtm != undefined) {
             var last = new Date(User.registerDtm);
             if (!sameDay(last, new Date())) {
-                servey = await Diagnosis.v2.registerServey(Token.token);
+                servey = await Diagnosis.v2.registerServey(User.token);
             }
         } else {
-            servey = await Diagnosis.v2.registerServey(Token.token);
+            servey = await Diagnosis.v2.registerServey(User.token);
         }
         console.log(servey);
         console.log("계속하려면 아무키나 누르십시오...");

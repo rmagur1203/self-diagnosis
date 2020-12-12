@@ -113,7 +113,7 @@
   pInfAgrmYn: 'Y',
   userName: '이름',
   stdntYn: 'Y',
-  token: 'Bearer 토큰',
+  token: 'Bearer 토큰 1',
   mngrDeptYn: 'N'
 }
 ```
@@ -137,7 +137,7 @@ true //비밀번호가 맞을시에 true 반환
     mngrYn: 'N',
     schulCrseScCode: '3', //학교 분류 코드(초등학교, 중학교, 고등학교 등)
     lctnScCode: '10', //학교 지역 분류 코드
-    token: 'Bearer 토큰',
+    token: 'Bearer 토큰 2',
     atptOfcdcConctUrl: '관할 교육청 주소',
     wrongPassCnt: 0,
     otherYn: 'N' //다른 사람이 있는지
@@ -158,7 +158,7 @@ true //비밀번호가 맞을시에 true 반환
   schulCrseScCode: '3', //학교 분류 코드(초등학교, 중학교, 고등학교 등)
   lctnScCode: '10', //학교 지역 분류 코드
   insttClsfCode: '5',
-  token: 'Bearer 토큰',
+  token: 'Bearer 토큰 3',
   atptOfcdcConctUrl: '관할 교육청 주소',
   registerDtm: '자가진단 한 시각',
   registerYmd: '자가진단 한 날짜',
@@ -179,6 +179,7 @@ true //비밀번호가 맞을시에 true 반환
 6. Servey - https://${atptOfcdcConctUrl}/registerServey
 
 # Api v2
+## Request Url
 1. searchSchool - https://hcs.eduro.go.kr/v2/searchSchool
 2. findUser - https://${atptOfcdcConctUrl}/v2/findUser
 3. hasPassword - https://${atptOfcdcConctUrl}/v2/hasPassword
@@ -186,3 +187,8 @@ true //비밀번호가 맞을시에 true 반환
 5. selectGroupList - https://${atptOfcdcConctUrl}/v2/selectUserGroup
 6. getUserInfo - https://${atptOfcdcConctUrl}/v2/getUserInfo
 7. registerServey - v1 의 registerServey 그대로 사용
+
+## Parameter
+```js
+searchSchool(lctnScCode, schulCrseScCode, orgName, loginType = "school");
+```

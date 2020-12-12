@@ -92,30 +92,29 @@ const normalServey = {
     rspns15: null,
     //Unknown
     upperToken: "",
+    upperUserNameEncpt: "",
     deviceUuid: ""
 };
-const URL_LIST = {
-    SEARCH_SCHOOL: "/v2/searchSchool",
-    FIND_USER: "/v2/findUser",
-    UPDATE_AGREEMENT: "/v2/updatePInfAgrmYn",
-    HAS_PASSWORD: "/v2/hasPassword",
-    REGISTER_PASSWORD: "/v2/registerPassword",
-    LOGIN_WITH_SECOND_PASSWORD: "/v2/validatePassword",
-    INIT_PASSWORD: "/v2/initPassword",
-    SEND_SURVEY_RESULT: "/registerServey",
-    SELECT_GROUP_LIST: "/v2/selectUserGroup",
-    REFRESH_USER_INFO: "/v2/getUserInfo",
-    REGISTER_GROUP_LIST: "/v2/insertUserInGroup",
-    REMOVE_GROUP_LIST: "/v2/removeUserInGroup",
-    TEACHER_CLASS_LIST: "/joinClassList",
-    MANAGER_CLASS_LIST: "/joinDeptList",
-    CLASS_JOIN_LIST: "/join",
-    DEPT_JOIN_LIST: "/joinTchr",
-    JOIN_DETAIL: "/joinDetail",
-    SEND_PUSH: "/push",
-    SELECT_NOTICE_LIST: "/v2/selectNoticeList",
-    SELECT_NOTICE_CONTENTS: "/v2/selectNotice"
-}
+SEARCH_SCHOOL = "/v2/searchSchool";
+FIND_USER = "/v2/findUser";
+UPDATE_AGREEMENT = "/v2/updatePInfAgrmYn";
+HAS_PASSWORD = "/v2/hasPassword";
+REGISTER_PASSWORD = "/v2/registerPassword";
+LOGIN_WITH_SECOND_PASSWORD = "/v2/validatePassword";
+INIT_PASSWORD = "/v2/initPassword";
+SEND_SURVEY_RESULT = "/registerServey";
+SELECT_GROUP_LIST = "/v2/selectUserGroup";
+REFRESH_USER_INFO = "/v2/getUserInfo";
+REGISTER_GROUP_LIST = "/v2/insertUserInGroup";
+REMOVE_GROUP_LIST = "/v2/removeUserInGroup";
+TEACHER_CLASS_LIST = "/joinClassList";
+MANAGER_CLASS_LIST = "/joinDeptList";
+CLASS_JOIN_LIST = "/join";
+DEPT_JOIN_LIST = "/joinTchr";
+JOIN_DETAIL = "/joinDetail";
+SEND_PUSH = "/push";
+SELECT_NOTICE_LIST = "/v2/selectNoticeList";
+SELECT_NOTICE_CONTENTS = "/v2/selectNotice";
 
 const v1 = {
     WAFData: () => new Promise((resolve, reject) =>
@@ -184,7 +183,8 @@ const v1 = {
             if (err) reject(err);
             resolve(body);
         })),
-    Servey: (token, form = normalServey) => new Promise((resolve, reject) =>
+    Servey: (token, form = normalServey) => new Promise((resolve, reject) => {
+        form.upperToken = token;
         request.post({
             url: `https://${atptOfcdcConctUrl}/registerServey`,
             method: "POST",
@@ -198,7 +198,8 @@ const v1 = {
         }, function(err, res, body) {
             if (err) reject(err);
             resolve(body);
-        })),
+        });
+    }),
     AutoCheck: async(lctnScCode, schulCrseScCode, schoolName, Name, Birth) => {
         var School = await SearchSchool(lctnScCode, schulCrseScCode, schoolName);
         var Token = await LoginToken(School.schulList[0].orgCode, Name, Birth);
