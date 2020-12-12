@@ -7,12 +7,12 @@ const input = readline.createInterface({
     output: process.stdout
 });
 const question = (query) => new Promise((resolve, reject) => {
-    input.question(query, function(answer) {
+    input.question(query, function (answer) {
         resolve(answer);
     });
 });
 
-const exit = async() => {
+const exit = async () => {
     process.stdin.setRawMode(true);
     return new Promise(resolve => process.stdin.once('data', data => {
         process.exit(1);
@@ -38,10 +38,15 @@ async function Check(orgCode, cdcUrl, Name, Birth, Pwd = null) {
                     Pwd: Pwd
                 }
                 writeFileSync("info.json", JSON.stringify(obj));
+            }
+            var tk = await Diagnosis.v2.validatePassword(token, Pwd);
+            if (typeof (tk) == "string")
+                token = tk;
+            else {
+                console.log("비밀번호가 틀립니다.");
+                console.log(tk);
                 process.exit(1);
             }
-            else
-                token = await Diagnosis.v2.validatePassword(token, Pwd);
         }
         var List = await Diagnosis.v2.selectUserGroup(token);
         var User = await Diagnosis.v2.getUserInfo(List[0].token, orgCode, List[0].userPNo);
@@ -65,9 +70,9 @@ async function Check(orgCode, cdcUrl, Name, Birth, Pwd = null) {
 
 sameDay = (d1, d2) => d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
 
-(async() => {
+(async () => {
     if (existsSync("info.json")) {
-        (async() => {
+        (async () => {
             var obj = JSON.parse(await readFileSync("info.json"));
             Check(obj.orgCode, obj.cdcUrl, obj.Name, obj.Birth, obj.Pwd);
         })();

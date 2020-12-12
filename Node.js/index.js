@@ -271,7 +271,10 @@ const v2 = {
         }
     }, function(err, res, body) {
         if (err) reject(err);
-        resolve(body.replace("\"", ""));
+        if (typeof(body) == "string")
+            resolve(body.replace("\"", ""));
+        else
+            resolve(body);
     })),
     selectUserGroup: (token) => new Promise((resolve, reject) => request.post({
         url: `https://${atptOfcdcConctUrl}/${SELECT_GROUP_LIST}`,
