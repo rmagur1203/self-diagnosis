@@ -49,15 +49,15 @@ async function Check(orgCode, cdcUrl, Name, Birth, Pwd = null) {
             }
         }
         var List = await Diagnosis.v2.selectUserGroup(token);
-        var User = await Diagnosis.v2.getUserInfo(List[0].token, orgCode, List[0].userPNo);
+        var User = await Diagnosis.v2.getUserInfo(token, orgCode, List[0].userPNo);
         var servey = "오늘은 이미 자가진단을 했습니다.";
         if (User.registerDtm != undefined) {
             var last = new Date(User.registerDtm);
             if (!sameDay(last, new Date())) {
-                servey = await Diagnosis.v2.registerServey(User.token);
+                servey = await Diagnosis.v2.registerServey(token);
             }
         } else {
-            servey = await Diagnosis.v2.registerServey(User.token);
+            servey = await Diagnosis.v2.registerServey(token);
         }
         console.log(servey);
         console.log("계속하려면 아무키나 누르십시오...");
@@ -67,6 +67,43 @@ async function Check(orgCode, cdcUrl, Name, Birth, Pwd = null) {
         console.log(ex);
     }
 }
+async function Check2(orgCode, cdcUrl, Name, Birth, Pwd = null) {
+    try {
+        Diagnosis.setCdcUrl(cdcUrl);
+        var Token = await Diagnosis.v2.findUser(orgCode, Name, Birth);
+        var token = Token.token;
+        var hasPwd = await Diagnosis.v2.hasPassword(token);
+        if (hasPwd) {
+            if (!Pwd) {
+                console.log(Name, "비밀번호가 필요합니다.");
+                return;
+            }
+            var tk = await Diagnosis.v2.validatePassword(token, Pwd);
+            if (typeof (tk) == "string")
+                token = tk;
+            else {
+                console.log(Name, "비밀번호가 틀립니다.");
+                console.log(tk);
+                process.exit(1);
+            }
+        }
+        var List = await Diagnosis.v2.selectUserGroup(token);
+        var User = await Diagnosis.v2.getUserInfo(token, orgCode, List[0].userPNo);
+        var servey = "오늘은 이미 자가진단을 했습니다.";
+        if (User.registerDtm != undefined) {
+            var last = new Date(User.registerDtm);
+            if (!sameDay(last, new Date())) {
+                servey = await Diagnosis.v2.registerServey(token);
+            }
+        } else {
+            servey = await Diagnosis.v2.registerServey(token);
+        }
+        console.log(Name, servey);
+    } catch (ex) {
+        console.log(Name, "오류가 발생했습니다.");
+        console.log(Name, ex);
+    }
+}
 
 sameDay = (d1, d2) => d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
 
@@ -74,7 +111,14 @@ sameDay = (d1, d2) => d1.getFullYear() === d2.getFullYear() && d1.getMonth() ===
     if (existsSync("info.json")) {
         (async () => {
             var obj = JSON.parse(await readFileSync("info.json"));
-            Check(obj.orgCode, obj.cdcUrl, obj.Name, obj.Birth, obj.Pwd);
+            if (obj.length == undefined)
+                Check(obj.orgCode, obj.cdcUrl, obj.Name, obj.Birth, obj.Pwd);
+            else {
+                for (item of obj) {
+                    await Check2(item.orgCode, item.cdcUrl, item.Name, item.Birth, item.Pwd);
+                }
+                await exit();
+            }
         })();
     } else {
         console.clear();
