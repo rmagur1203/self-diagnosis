@@ -315,10 +315,56 @@ const v2 = {
     }
 }
 
+const v2_PassEnc = {
+    findUser: (orgcode, name, birthday, loginType = "school") => new Promise((resolve, reject) =>
+        request.post({
+            url: `https://${atptOfcdcConctUrl}/${FIND_USER}`,
+            method: "POST",
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+                'Content-Type': 'application/json',
+                'Origin': 'https://hcs.eduro.go.kr',
+                'Referer': 'https://hcs.eduro.go.kr/'
+            },
+            json: {
+                orgCode: orgcode,
+                name: name,
+                birthday: birthday,
+                loginType: loginType,
+                stdntPNo: null
+            }
+        }, function (err, res, body) {
+            if (err) reject(err);
+            resolve(body);
+        })),
+    validatePassword: (token, password) => new Promise((resolve, reject) => request.post({
+        url: `https://${atptOfcdcConctUrl}/${LOGIN_WITH_SECOND_PASSWORD}`,
+        method: "POST",
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+            'Content-Type': 'application/json',
+            'Authorization': token,
+            'Origin': 'https://hcs.eduro.go.kr',
+            'Referer': 'https://hcs.eduro.go.kr/'
+        },
+        json: {
+            deviceUuid: "",
+            password: password
+        }
+    }, function (err, res, body) {
+        if (err) reject(err);
+        if (typeof (body) == "string")
+            resolve(body.replace("\"", ""));
+        else
+            resolve(body);
+    })),
+}
+
 module.exports = {
     setCdcUrl: (str) => atptOfcdcConctUrl = str,
     lctnScCodes: lctnScCodes,
     schulCrseScCodes: schulCrseScCodes,
     v1: v1,
-    v2: v2
+    v2: v2,
+    v2_PassEnc: v2_PassEnc
 }
