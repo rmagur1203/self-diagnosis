@@ -7,14 +7,14 @@ crypto.setPublicKey("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA81dCnCKt0NVH7j5
 let atptOfcdcConctUrl = "hcs.eduro.go.kr";
 
 const lctnScCodes = Object.freeze({
-    서울특별시: 01,
-    부산광역시: 02,
-    대구광역시: 03,
-    인천광역시: 04,
-    광주광역시: 05,
-    대전광역시: 06,
-    울산광역시: 07,
-    세종특별자치시: 08,
+    서울특별시: "01",
+    부산광역시: "02",
+    대구광역시: "03",
+    인천광역시: "04",
+    광주광역시: "05",
+    대전광역시: "06",
+    울산광역시: "07",
+    세종특별자치시: "08",
     경기도: 10,
     강원도: 11,
     충청북도: 12,
@@ -206,7 +206,7 @@ const v1 = {
         var servey = await Servey(Token.token);
         return JSON.stringify(servey);
     }
-}
+};
 
 const v2 = {
     searchSchool: (lctnScCode, schulCrseScCode, orgName, loginType = "school") => new Promise((resolve, reject) =>

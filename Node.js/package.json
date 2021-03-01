@@ -1,6 +1,6 @@
 {
     "name": "self-diagnosis",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "self-diagnosis for Ministry of Education",
     "main": "index.js",
     "dependencies": {
