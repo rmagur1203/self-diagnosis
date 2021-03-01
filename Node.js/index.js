@@ -41,7 +41,7 @@ const createServey = (rspns01, rspns02, rspns09) => {
     };
     result.rspns00 = (!rspns01 && !rspns02 && !rspns09);
     return result;
-}
+};
 const normalServey = {
     rspns00: "Y",
     //  
@@ -51,7 +51,7 @@ const normalServey = {
     //단, 기저질환 등으로 코로나19와 관계없이 평소에 발열 증상이 계속되는 경우는 제외
     //1 : 아니요
     //2 : 예
-    
+
     //학생에게 코로나19가 의심되는 아래의 임상증상*이 있나요?
     //*(주요 임상증상) 기침, 호흡곤란, 오한, 근육통, 두통, 인후통, 후각·미각 소실 또는 폐렴
     //단, 기저질환 등으로 코로나19와 관계없이 평소에 다음 증상이 계속되는 경우는 제외
@@ -71,7 +71,7 @@ const normalServey = {
     //Unknown
     rspns08: null,
     //Unknown
-    
+
     rspns09: "0",
     //학생 본인 또는 동거인이 방역당국에 의해 현재 자가격리가 이루어지고 있나요?
     //※ <방역당국 지침> 최근 14일 이내 해외 입국자, 확진자와 접촉자 등은 자가격리 조치
@@ -123,7 +123,7 @@ const v1 = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
                 'Content-Type': 'application/json',
             },
-        }, function(err, res, body) {
+        }, function (err, res, body) {
             if (err) reject(err);
             resolve(res.headers["set-cookie"]);
         })),
@@ -138,7 +138,7 @@ const v1 = {
                 'Referer': 'https://hcs.eduro.go.kr/'
             },
             json: {}
-        }, function(err, res, body) {
+        }, function (err, res, body) {
             if (err) reject(err);
             resolve(body);
         })),
@@ -156,11 +156,11 @@ const v1 = {
                 orgCode: orgCode,
                 userPNo: userPNo
             }
-        }, function(err, res, body) {
+        }, function (err, res, body) {
             if (err) reject(err);
             resolve(body);
         })),
-    SearchSchool: (lctnScCode, schulCrseScCode, orgName) => new Promise(async(resolve, reject) => {
+    SearchSchool: (lctnScCode, schulCrseScCode, orgName) => new Promise(async (resolve, reject) => {
         console.warn("v1 의 SearchSchool 은 Deprecated 되었습니다. 대신 v2 의 SearchSchool 을 사용해주세요.");
         resolve(await v2.searchSchool(lctnScCode, schulCrseScCode, orgName));
     }),
@@ -179,7 +179,7 @@ const v1 = {
                 name: crypto.encrypt(name),
                 birthday: crypto.encrypt(birthday)
             }
-        }, function(err, res, body) {
+        }, function (err, res, body) {
             if (err) reject(err);
             resolve(body);
         })),
@@ -195,12 +195,12 @@ const v1 = {
                 'Referer': 'https://hcs.eduro.go.kr/'
             },
             json: form
-        }, function(err, res, body) {
+        }, function (err, res, body) {
             if (err) reject(err);
             resolve(body);
         });
     }),
-    AutoCheck: async(lctnScCode, schulCrseScCode, schoolName, Name, Birth) => {
+    AutoCheck: async (lctnScCode, schulCrseScCode, schoolName, Name, Birth) => {
         var School = await SearchSchool(lctnScCode, schulCrseScCode, schoolName);
         var Token = await LoginToken(School.schulList[0].orgCode, Name, Birth);
         var servey = await Servey(Token.token);
@@ -210,7 +210,7 @@ const v1 = {
 
 const v2 = {
     searchSchool: (lctnScCode, schulCrseScCode, orgName, loginType = "school") => new Promise((resolve, reject) =>
-        request.get(encodeURI(`https://${atptOfcdcConctUrl}/${SEARCH_SCHOOL}?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&loginType=${loginType}`), function(err, res, body) {
+        request.get(encodeURI(`https://${atptOfcdcConctUrl}/${SEARCH_SCHOOL}?lctnScCode=${lctnScCode}&schulCrseScCode=${schulCrseScCode}&orgName=${orgName}&loginType=${loginType}`), function (err, res, body) {
             if (err) reject(err);
             var School = JSON.parse(body);
             if (School.isError == true)
@@ -236,7 +236,36 @@ const v2 = {
                 loginType: loginType,
                 stdntPNo: null
             }
-        }, function(err, res, body) {
+        }, function (err, res, body) {
+            if (err) reject(err);
+            resolve(body);
+        })),
+    findUserMoreInfo: (orgcode, name, birthday, userclass, loginType = "school") => new Promise((resolve, reject) =>
+        request.post({
+            url: `https://${atptOfcdcConctUrl}/${FIND_USER}`,
+            method: "POST",
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+                'Content-Type': 'application/json',
+                'Origin': 'https://hcs.eduro.go.kr',
+                'Referer': 'https://hcs.eduro.go.kr/'
+            },
+            json: {
+                birthday: crypto.encrypt(birthday),
+                classCode: userclass.classCode,
+                classNm: userclass.classNm,
+                dddepNm: userclass.dddepNm,
+                grade: userclass.grade,
+                loginType: loginType,
+                mobnuEncpt: userclass.mobnuEncpt,
+                name: crypto.encrypt(name),
+                orgCode: orgcode,
+                stdntCnEncpt: userclass.stdntCnEncpt,
+                stdntPNo: null,
+                stdntYn: userclass.stdntYn,
+                userPNo: userclass.userPNo
+            }
+        }, function (err, res, body) {
             if (err) reject(err);
             resolve(body);
         })),
@@ -251,7 +280,7 @@ const v2 = {
             'Referer': 'https://hcs.eduro.go.kr/'
         },
         json: {}
-    }, function(err, res, body) {
+    }, function (err, res, body) {
         if (err) reject(err);
         resolve(body);
     })),
@@ -269,9 +298,9 @@ const v2 = {
             deviceUuid: "",
             password: crypto.encrypt(password)
         }
-    }, function(err, res, body) {
+    }, function (err, res, body) {
         if (err) reject(err);
-        if (typeof(body) == "string")
+        if (typeof (body) == "string")
             resolve(body.replace("\"", ""));
         else
             resolve(body);
@@ -287,7 +316,7 @@ const v2 = {
             'Referer': 'https://hcs.eduro.go.kr/'
         },
         json: {}
-    }, function(err, res, body) {
+    }, function (err, res, body) {
         if (err) reject(err);
         resolve(body);
     })),
@@ -305,15 +334,15 @@ const v2 = {
             orgCode: orgCode,
             userPNo: userPNo
         }
-    }, function(err, res, body) {
+    }, function (err, res, body) {
         if (err) reject(err);
         resolve(body);
     })),
-    registerServey: async(token, form = normalServey) => {
+    registerServey: async (token, form = normalServey) => {
         console.warn("Deprecated warning in v2.registerServey function\n-   v1 의 registerServey 를 사용해주시기 바랍니다.");
         return await v1.Servey(token, form);
     }
-}
+};
 
 const v2_PassEnc = {
     findUser: (orgcode, name, birthday, loginType = "school") => new Promise((resolve, reject) =>
@@ -358,7 +387,7 @@ const v2_PassEnc = {
         else
             resolve(body);
     })),
-}
+};
 
 module.exports = {
     setCdcUrl: (str) => atptOfcdcConctUrl = str,
@@ -367,4 +396,4 @@ module.exports = {
     v1: v1,
     v2: v2,
     v2_PassEnc: v2_PassEnc
-}
+};
